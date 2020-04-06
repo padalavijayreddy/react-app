@@ -1,0 +1,62 @@
+-----* PLANNINIG *-----
+
+/*
+
+   Step - 1 :
+      
+        - EmojiGame 
+          - Header
+            - Score 
+            - TopScore
+            - Theme
+          - DisplayPictures
+            - List Of Pictures
+               - ShuffleTheList
+            - ListOfID's 
+               - GameOver
+               - YouWon
+          - GameDetails
+            - InstructionsAndFootertext
+            
+    Step - 2 :
+          
+          - Bring Minimum UI using with PROPS
+    
+    Step - 3 :
+          
+          - Light Theme - import the previous assignment code.
+          
+          - ComponentDidMount - Bring the data using Fetch
+            - Make it as a ListOfPictures 'list'.
+          - ListOfPictures 
+             - Each picture will have UniqueKey & UniqueId.
+             - Display All the Pictures.
+          - CardPictures 
+            - When Onclick is done on the Picture Card.
+            
+               - Each Id's has to be stored in the another ListOfIds 'list'.
+               
+                  - Every Id has to be unique when ever the to id's get equal. 
+                    - Show Your Score & You Lose & Play again
+                  - If the Id's are not equal
+                    - ScoreCount will be increased.
+                    - If the Id.length are equal to 12 then Show Congratulations & You Won & Your Score & Play Again.
+                        
+                        
+                         - When user click the Play Again button 
+                             - ListOfIds should be empty
+                             - Render the Display Pictures.
+                             - if TopScoreCount is greater than or equal to the ScoreCount then TopScoreCount value will be replaced with the ScoreCount Value.
+                             
+                    
+               - ShuffleTheListOfPictures.
+                  - Code for Shuffling the Array using Math.floor & Math.Random return the Shuffled Input.
+                  - Render the DisplayPictures
+    Step - 4 :
+           
+           - Rest of the Functionality.
+    Step - 5 :
+     
+           - When ever the ID's are equal show You Lose & also display the pictures what are the remaining id's you missed.
+           
+*/

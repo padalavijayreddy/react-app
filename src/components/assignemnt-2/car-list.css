@@ -1,0 +1,119 @@
+.Start{
+    background-color: green;
+    border-radius: 4px;
+    max-width:100px;
+}
+
+.Stop{
+    background-color: red;
+    border-radius: 4px;
+    max-width:100px;
+}
+
+.car{
+    display: flex;
+    flex-direction:column;
+    max-width:200px;
+}
+
+.default-btn{
+    border-radius: 4px;
+    max-width:100px;
+}
+.carListContainer{
+    display: flex;
+    flex-direction:column;
+    max-width:200px;
+}
+
+.car-list{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:400px;
+    width:800px;
+    padding:10px;
+}
+
+.adding{
+    display:flex;
+    height:100px;
+    width:600px;
+    justify-content:flex-end;
+    align-items:flex-end;
+}
+
+.delete{
+    display:flex;
+    height:100px;
+    width:700px;
+    justify-content:space-around;
+}
+
+.btn {
+  border:none;
+  color: red;
+  font-size: 16px;
+}
+
+
+
+.add-button{
+    align-items:flex-end;
+    width: 70px;
+    height: 40px;
+    border-radius: 2px;
+    color: white;
+    background-color: royalblue;
+    border: 2px solid lightblue;
+}
+.intial-car{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    height:300px;
+    width:400px;
+}
+
+.speed{
+    display:flex;
+    justify-content:space-between;
+    height:100px;
+    width:400px;
+}
+
+.start-button{
+    align-items: flex-start;
+    width: 70px;
+    height: 40px;
+    border-radius: 2px;
+    color: white;
+    background-color: green;
+    border: 2px solid lightgreen;
+}
+
+.stop-button{
+    align-items: flex-start;
+    width: 70px;
+    height: 40px;
+    border-radius: 2px;
+    color: white;
+    background-color: red;
+    border: 1px solid #ff4d4d;
+}
+.accelerate{
+    width: 130px;
+    height: 40px;
+    border-radius: 2px;
+    color: white;
+    background-color: grey;
+}
+
+.brake {
+    width: 130px;
+    height: 40px;
+    border-radius: 2px;
+    color: white;
+    background-color: grey;
+}
