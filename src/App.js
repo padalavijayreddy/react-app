@@ -103,7 +103,7 @@ class App extends React.Component {
             <CountryDetails selectedTheme = {this.state.selectedTheme} onChangeTheme = {this.onChangeTheme}/>
           </Route>
           <Route exact path="/EmojiGame">
-            <EmojiGame selectedTheme = {this.state.selectedTheme} onChangeTheme = {this.onChangeTheme}/>
+            <EmojiGame />
           </Route>
           <Route path='/'>
             <Home />

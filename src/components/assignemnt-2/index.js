@@ -2,7 +2,7 @@ import React from 'react';
 //import './car-list.css';
 import { IoMdArrowBack } from "react-icons/io";
 import {withRouter} from 'react-router-dom';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 //Global Declaration
 
