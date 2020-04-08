@@ -23,17 +23,10 @@
   "scripts": {
     "build:css": "postcss src/index.css -o src/styles/tailwind.css",
     "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
-<<<<<<< HEAD
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-=======
     "start": "npm run watch:css & react-app-rewired start",
     "build": "npm run build:css react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
->>>>>>> 6266c46f6948c3560df68fd2fb31192fa3081e2e
     "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh"
   },
   "eslintConfig": {

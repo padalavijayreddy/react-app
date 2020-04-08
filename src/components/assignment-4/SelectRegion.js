@@ -1,5 +1,8 @@
 import React from 'react';
+import themeStore from '../../stores/ThemeStore/index.js';
+import { observer }  from 'mobx-react';
 
+@observer
 class SelectRegion extends React.Component{
     onChangeSelectedRegion = ()=> {
         
@@ -7,7 +10,6 @@ class SelectRegion extends React.Component{
     render() {
         const { 
             onClickRegion,
-            //selectRegion,
             selectTheme,
             regionalOptions, 
             } =  this.props;
@@ -15,7 +17,7 @@ class SelectRegion extends React.Component{
             return <option key={regions} value={regions}>{regions}</option>;
         });
         return(
-             <select className="h-auto w-1/4 flex justify-center items-center" style={ selectTheme.style } onChange={onClickRegion}>{regionalList}</select>
+             <select className={this.props.selectTheme.style} className="h-auto w-1/4 flex justify-center items-center" onChange={onClickRegion}>{regionalList}</select>
             );
     }
 }

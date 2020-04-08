@@ -1,0 +1,55 @@
+Plan-1 :
+
+   Step:1 : 
+     -Divide into React Components
+     
+     - TodosApp
+          - UserInput
+          - TodoList
+             - state = userInput
+             - Todo
+          - TodoFooter
+             - ActiveTodosCount
+             - TodoFilters
+                - AllButton
+                - ActiveButton
+                - CompletedButton
+                - ClearCompletedButton
+    Step:2 :
+      - Props - Show data using minimum UI
+      
+    ----------------------------------------------  
+    
+    Step:3 : 
+    
+    Application State 
+        - userInput 
+        - >>>>activeTodosCount = listOfActiveTodos.length
+        - >>>>showClearCompletedButton = listOfCompletedTodos.length>0
+        - selectedFilterButton
+        - eachTodoCheckedState
+        - eachTodoContent
+        - eachTodoFocusedState
+        - listOfAllTodos
+        - >>>>listOfActiveTodos = listOfCompletedTodos.filter(isChecked == false)
+        - >>>>listOfCompletedTodos = listOfCompletedTodos.filter(isChecked == true)
+        - >>>>showFooter = listOfAllTodos.length > 0
+        
+        - Minimum Application State 
+           - userInput > UserInput
+           - selectedFilterButton > TodoApp
+           - eachTodoCheckedState
+           - eachTodoContent
+           - eachTodoFocusedState
+           
+           - To which component state should be given 
+    
+    Step:4 :
+       
+       -RestOfTheFunctionality
+       - RestOfTheMethodsForTheComponent
+       - RestOfTheFeatures
+       
+    Step:5 :
+        
+       Clean Code & Optimised Component

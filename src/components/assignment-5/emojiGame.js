@@ -150,7 +150,7 @@ class EmojiGame extends React.Component{
               <Navbar score = { score } topScore = { topScore } selectedTheme = { selectedTheme } onChangeTheme = { this.onChangeTheme }/>
               <div className="flex justify-between h-full w-full flex-wrap ">
               {(gameState === 'PLAYING')? this.displayImages():
-                     <WinOrLose setTopScore={this.setTopScore} resetGame={this.resetGame} gameState={gameState} score = { score } topScore = { topScore } selectedTheme = { selectedTheme } onChangeTheme = { this.onChangeTheme }/>
+                     <WinOrLose emojis={this.emojis} setTopScore={this.setTopScore} resetGame={this.resetGame} gameState={gameState} score = { score } topScore = { topScore } selectedTheme = { selectedTheme } onChangeTheme = { this.onChangeTheme }/>
                  }
               </div>
               <HowToPlay selectedTheme = { selectedTheme } onChangeTheme = { this.onChangeTheme }/>

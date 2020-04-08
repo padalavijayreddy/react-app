@@ -1,14 +1,15 @@
 /*global fetch*/
 
 import React from "react";
+import { observer }  from 'mobx-react';
 import './index.css';
 import  CountriesFilterBar  from './CountriesFilterBar.js';
 import  FilterComponent  from './FilterComponent.js';
 import { withRouter } from 'react-router-dom';
-import { IoMdArrowBack } from "react-icons/io";
 import Header from './Header.js';
+import themeStore from '../../stores/ThemeStore/index.js';
 
-
+@observer
 class CountriesDashboardApp extends React.Component{
     
     state = {
@@ -23,6 +24,14 @@ class CountriesDashboardApp extends React.Component{
        this.setState({
           countries:jsonData
       });
+    }
+    
+    getCurrentTheme = () => {
+        return themeStore.selectedTheme;
+    }
+  
+    setCurrentTheme = (theme) => {
+        themeStore.setCurrentTheme(theme);
     }
     
     componentDidMount = () => {
@@ -52,8 +61,11 @@ class CountriesDashboardApp extends React.Component{
     }
     
     render(){
+        //const themeStyles = themeStore.themeStyle[themeStore.theme];
+        //console.log(themeStyles);
+        console.log(this.props);
         return(
-            <div style={ this.props.selectedTheme.style }>
+            <div className={this.props.selectedTheme.style}>
               <Header selectTheme = {this.props.selectedTheme} changeTheme = {this.props.onChangeTheme}/>
               <CountriesFilterBar 
                   searchUserInput={this.state.searchText}

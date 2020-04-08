@@ -23,6 +23,12 @@ export default function Home(){
        <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EmojiGame">EmojiGame</Link>
        </div>
+       <div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/CounterApp">CounterApp</Link>
+       </div>
+       <div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/TodosList">TodosList</Link>
+       </div>
     </div>
     );
 }

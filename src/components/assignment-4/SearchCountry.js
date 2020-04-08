@@ -1,6 +1,9 @@
 import React from 'react';
 import { MdSearch } from "react-icons/md";
+import themeStore from '../../stores/ThemeStore/index.js';
+import { observer }  from 'mobx-react';
 
+@observer
 class SearchCountry extends React.Component{
     state = {
         text :"",
@@ -19,11 +22,10 @@ class SearchCountry extends React.Component{
     }
     
     render(){
-        const { selectTheme } = this.props;
         return(
             <form className="h-auto flex justify-center items-center border-gray-600 border-solid border-2 w-1/4" onSubmit={this.handleSubmit} >
              <label className="flex justify-center items-center text-lg"><MdSearch/></label>
-             <input onChange={this.handleSearchText} value={this.state.text} className="search-button" type="text" style={ selectTheme.style } placeholder="Search for a country..."/>
+             <input className={this.props.selectTheme.style} onChange={this.handleSearchText} value={this.state.text} className="search-button" type="text" placeholder="Search for a country..."/>
             </form>
             );
     }

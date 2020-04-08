@@ -1,4 +1,7 @@
 import React from "react";
+import themeStore from './stores/ThemeStore';
+import {observer} from 'mobx-react';
+//import {configure} from 'mobx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,7 +9,9 @@ import {
   Link
 } from "react-router-dom";
 
+
 import './App.css';
+import CounterPage from './components/CounterPage/index.js';
 import CarsList  from './components/assignemnt-2/index.js';
 import TodoList  from './components/todo-list/todosApp.js';
 import FormComponent  from './components/assignemnt-3/index.js';
@@ -19,61 +24,32 @@ import YourState  from './components/assignemnt-3/YourState.js';
 import DisabledButton from './components/assignemnt-3/DisabledButton.js';
 import Home  from './components/Home/Home.js';
 import EmojiGame from './components/assignment-5/emojiGame.js';
+import CounterApp from './components/assignement-6/index.js';
+import TodosList from './components/modxTodo-List/todoList.js';
 
-const mode = {
-    light :{
-                id:'0',
-                name:'Light Mode',
-                style:{
-                    backgroundColor:'#fff',
-                    color:'black'
-                },
-                emojis:{
-                  backgroundColor:'#fff',
-                  color:'black'
-                }
-            },
-    dark  :{
-                id:'1',
-                name:'Dark Mode',
-                style:{
-                    backgroundColor:'#2b3945',
-                    color:'white'
-                },
-                emojis:{
-                  backgroundColor:"blue",
-                  color:'white'
-                }
-            }
-};
 
+@observer
 class App extends React.Component {
- state = {
-        selectedTheme : mode.light
-    }
   
- onChangeTheme = () => {
-        
-        if(this.state.selectedTheme === mode.light){
-            this.setState({
-                selectedTheme : mode.dark,
-            });
-        }
-        else{
-            this.setState({
-                selectedTheme : mode.light,
-            });
-        }
-    }
+  getCurrentTheme = () => {
+        return themeStore.theme;
+  }
     
- render(){
-  return (
+  onChangeTheme=()=>{
+    themeStore.setCurrentTheme(themeStore.theme);
+  }
+ 
+  render(){
+    return (
     <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route path="/car">
+          <Route exact path="/Counterpage">
+            <CounterPage />
+          </Route>
+          <Route exact path="/car">
             <CarsList />
           </Route>
-          <Route path="/TodoList">
+          <Route exact path="/TodoList">
             <TodoList />
           </Route>
           <Route exact path="/FormComponent">
@@ -95,29 +71,27 @@ class App extends React.Component {
            <DisabledButton />
           </Route>
           <Route exact path="/CountriesDashboardApp">
-            {/*<Header selectTheme = {this.state.selectedTheme} changeTheme = {this.onChangeTheme}/>*/}
-            <CountriesDashboardApp selectedTheme = {this.state.selectedTheme} onChangeTheme = {this.onChangeTheme}/>
+            <CountriesDashboardApp selectedTheme = {this.getCurrentTheme()} onChangeTheme = {this.onChangeTheme}/>
           </Route>
           <Route exact path="/CountriesDashboardApp/:countryId">
-            {/*<Header selectTheme = {this.state.selectedTheme} changeTheme = {this.onChangeTheme}/>*/}
-            <CountryDetails selectedTheme = {this.state.selectedTheme} onChangeTheme = {this.onChangeTheme}/>
+            <CountryDetails selectedTheme = {this.getCurrentTheme()} onChangeTheme = {this.onChangeTheme}/>
           </Route>
           <Route exact path="/EmojiGame">
             <EmojiGame />
+          </Route>
+          <Route exact path="/CounterApp">
+            <CounterApp />
+          </Route>
+          <Route exact path="/TodosList">
+            <TodosList />
           </Route>
           <Route path='/'>
             <Home />
           </Route>
         </Switch>
-
     </Router>
   );
  }
 }
 
 export default (App);
-/*export { CarsList };
-export { TodoList };
-export { FormComponent };
-import  Header  from './components/assignment-4/Header.js';
-*/

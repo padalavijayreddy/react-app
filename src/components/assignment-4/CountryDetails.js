@@ -1,9 +1,13 @@
 /*global fetch*/
 import React from "react";
+
 import {withRouter} from 'react-router-dom';
 import  Header  from './Header.js';
 import { FiArrowLeft } from "react-icons/fi";
+import themeStore from '../../stores/ThemeStore/index.js';
+import { observer }  from 'mobx-react';
 
+@observer
 class CountryDetails extends React.Component{
  
      state = {
@@ -46,6 +50,7 @@ class CountryDetails extends React.Component{
      }
      
      render(){
+      const { selectedTheme,onChangeTheme } = this.props;
       console.log(this.props);
       if(this.state.countryDetails.length>0){
        //console.log(this.state.countryDetails[0].borders);
@@ -55,12 +60,12 @@ class CountryDetails extends React.Component{
         return(
         <div className="bg-gray-400">
              <div>
-                <Header selectTheme = {this.props.selectedTheme} changeTheme = {this.props.onChangeTheme}/>
-                <div style={this.props.selectedTheme.style} className="h-1/4 w-full p-5 flex flex-col items-start justify-start">
+                <Header selectTheme = {selectedTheme} changeTheme = {onChangeTheme}/>
+                <div className={selectedTheme.style} className="h-1/4 w-full p-5 flex flex-col items-start justify-start">
                   <button className="flex text-lg" onClick={this.goBack}><FiArrowLeft/>Go back</button>
                 </div>
              </div>
-             <div style={this.props.selectedTheme.style} className="h-screen flex items-center justify-around">
+             <div className={selectedTheme.style} className="h-screen flex items-center justify-around">
                 <div>
                      <img className="image-tag" src={this.state.countryDetails[0].flag}/>
                 </div>
