@@ -7,7 +7,6 @@ import TodoAppFooter from './todoAppFooter.js';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 
-
 //GLOBAL DECLARATIONS//
 
 let universalListOfTodos = [];
@@ -18,7 +17,7 @@ let RemainingItems;
 
 @observer class TodosList extends React.Component{
     
-    @observable states = {TodoItems: [],eachId:0};
+    @observable states = {TodoItems: [],eachId:0,stateOfInput:false};
     
     userInput = (event)=> {
         if (event.keyCode === 13) {
@@ -80,15 +79,18 @@ let RemainingItems;
                     });
                 RemainingItems = ActiveItems.length;
                 this.states.TodoItems = ActiveItems;
+                this.states.stateOfInput = true;
                 break;
             case "Completed":
                 let Completed = universalListOfTodos.filter(items => {
                     return items.done === true; 
                 });
                 this.states.TodoItems = Completed;
+                this.states.stateOfInput = true;
                 break;
             case "All":
                 this.states.TodoItems = universalListOfTodos;
+                this.states.stateOfInput = false;
                 break;
             case "ClearCompleted":
                 let ClearCompleted = universalListOfTodos.filter(items =>{
@@ -96,6 +98,7 @@ let RemainingItems;
                 });
                 universalListOfTodos = ClearCompleted;
                 this.states.TodoItems = ClearCompleted;
+                this.states.stateOfInput = true;
         }
         console.log(this.states.TodoItems);
     }
@@ -109,9 +112,9 @@ let RemainingItems;
         return (
           <div className="todoapp" id="todo">
               <button className="flex justify-start items-center h-12 bg-black text-white text-lg w-full" type="button" onClick={this.goBack}><IoMdArrowBack/><b>Go Back</b></button>
-              {/*<div className="heading">todos</div>*/}
+              <div className="heading">todos</div>
               <div className="card">
-                <input autoFocus type="text" id="givenInput" aria-label="Enter a new todo item" placeholder="What needs to be done?" className="todo-input"  onKeyDown={this.userInput}/>
+                <input autoFocus type="text" id="givenInput" aria-label="Enter a new todo item" placeholder="What needs to be done?" className="todo-input" disabled={this.states.stateOfInput}  onKeyDown={this.userInput}/>
                 <div>{this.GetTodoList()}</div>
                 <div>
                     <TodoAppFooter footerdisplay={universalListOfTodos} displayfooterfunctions={this.displayFooter}  activeItems={RemainingItems}/>

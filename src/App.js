@@ -26,10 +26,11 @@ import Home  from './components/Home/Home.js';
 import EmojiGame from './components/assignment-5/emojiGame.js';
 import CounterApp from './components/assignement-6/index.js';
 import TodosList from './components/modxTodo-List/todoList.js';
+import TodoApp from './components/TodoApp/todoApp.js';
+import EventsApp from './components/EventsApp/index.js';
+import ProviderExample from './components/ProviderExample';
 
-
-@observer
-class App extends React.Component {
+@observer class App extends React.Component {
   
   getCurrentTheme = () => {
         return themeStore.theme;
@@ -79,11 +80,17 @@ class App extends React.Component {
           <Route exact path="/EmojiGame">
             <EmojiGame />
           </Route>
-          <Route exact path="/CounterApp">
-            <CounterApp />
+          <Route exact path="/ProviderExample">
+            <ProviderExample />
           </Route>
           <Route exact path="/TodosList">
             <TodosList />
+          </Route>
+          <Route exact path="/TodoApp">
+            <TodoApp />
+          </Route>
+          <Route exact path="/EventsApp">
+            <EventsApp />
           </Route>
           <Route path='/'>
             <Home />

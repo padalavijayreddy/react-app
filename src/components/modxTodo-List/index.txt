@@ -1,4 +1,60 @@
-Plan-1 :
+TodoStore -
+     stores  -Observable TodoList
+             -Observable Mode
+     
+     Methods - CreateTodo,RemoveTodo,ChangeMode.
+     
+TodoModel - 
+     Model  - Properties   - IsChecked,Id,TodoText.
+            - Methods      - onChangeCheckBox,onChangeText,onClickRemove.
+
+TodoApp - 
+  - Components     
+     - UserInput
+     - ListOfTodos
+     - TodoAppFooter
+    
+    
+Example - class 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Plan-1 :
 
    Step:1 : 
      -Divide into React Components
@@ -41,7 +97,6 @@ Plan-1 :
            - eachTodoCheckedState
            - eachTodoContent
            - eachTodoFocusedState
-           
            - To which component state should be given 
     
     Step:4 :
@@ -52,4 +107,6 @@ Plan-1 :
        
     Step:5 :
         
-       Clean Code & Optimised Component
+       Clean Code & Optimised Component.*/
+       
+       

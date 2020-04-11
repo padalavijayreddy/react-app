@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx';
+import { reaction } from 'mobx';
 
 class CounterStore {
    @observable count = 0
@@ -24,6 +25,14 @@ class CounterStore {
             this.count = this.count - 1;
         }
    }
+   
+   
+   addReaction1 = reaction(
+        () => this.count,
+        (value) => {
+            console.log('temp',value);
+        }
+    )
    
    @action.bound
    onChangeCount(event){

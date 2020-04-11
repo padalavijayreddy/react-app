@@ -12,14 +12,14 @@ class TodoAppFooter extends React.Component{
     }
     
     render(){
-        let activeItems = 0;
+        /*let activeItems = 0;
         let checkedTodos=this.props.footerdisplay.filter(items=>!items.done);
         activeItems = checkedTodos.length;
-        console.log(activeItems,checkedTodos);
+        console.log(activeItems,checkedTodos);*/
         if(this.props.footerdisplay.length>0){
           return(
               <div className="display-footer">
-                 <div class="items-left">{activeItems} items Left</div>
+                 {/*<div class="items-left">{this.props.activeItems} items Left</div>*/}
                  <button onClick={()=> this.displayfunctions("All")} id="all" className="all">All</button>
                  <button onClick={()=> this.displayfunctions("Active")} id="active" className="active">Active</button>
                  <button onClick={()=> this.displayfunctions("Completed")} id="completed" className="completed">Completed</button>

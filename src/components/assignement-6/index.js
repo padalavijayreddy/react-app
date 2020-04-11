@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import counterStore from '../../stores/CounterStore';
+import { reaction } from 'mobx';
 
 
 
@@ -19,6 +20,15 @@ import counterStore from '../../stores/CounterStore';
     onChangeCount =  (event) => {
         counterStore.onChangeCount(event);
     }
+    
+    addReaction2 = reaction(
+        () => this.count,
+        (value) => {
+            console.log('temp',value);
+        }
+    )
+    
+    
     
     render(){
         return (
