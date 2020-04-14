@@ -14,7 +14,7 @@ import eventStore  from '../../stores/EventStore';
     render(){
         const { onAddEvent,events,onDeleteEvent,noOfEvents } = eventStore;
         return(
-            <div>
+            <div className="bg-blue-400">
               <AddEvent onAddEvent={onAddEvent}/>
               <EventList events={events} onDeleteEvent={onDeleteEvent} noOfEvents={noOfEvents}/>
             </div>

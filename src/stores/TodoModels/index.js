@@ -2,17 +2,11 @@
 
 import { observable,action } from 'mobx';
 
-export type TodoModelProps={
-    id:string
-    title:string
-    isCompleted:boolean
-}
-
 class TodoModel {
-    @observable title:string
-    @observable isCompleted:boolean
+    @observable title
+    @observable isCompleted
     
-    constructor(text:TodoModelProps){
+    constructor(text){
         this.id = text.id;
         this.title = text.title;
         this.isCompleted = text.isCompleted;

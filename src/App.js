@@ -44,8 +44,8 @@ import ProviderExample from './components/ProviderExample';
     return (
     <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path="/Counterpage">
-            <CounterPage />
+          <Route exact path="/CounterApp">
+            <CounterApp />
           </Route>
           <Route exact path="/car">
             <CarsList />

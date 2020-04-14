@@ -12,6 +12,9 @@ export default function Home(){
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/car">CarApp</Link>
        </div>
        <div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/CounterApp">CounterApp</Link>
+       </div>
+       <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/TodoList">TodoList</Link>
        </div>
        <div>
@@ -26,12 +29,12 @@ export default function Home(){
        <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/ProviderExample">ProviderExample</Link>
        </div>
-       <div>
-         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/TodoApp">TodoApp</Link>
-       </div>
        {/*<div>
-         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EventsApp{/*">EventsApp</Link>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/TodoApp">TodoApp</Link>
        </div>*/}
+       <div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EventsApp">EventsApp</Link>
+       </div>
     </div>
     );
 }

@@ -2,7 +2,7 @@ import { observable, action } from 'mobx';
 import { reaction } from 'mobx';
 
 class CounterStore {
-   @observable count:number;
+   @observable count;
    
    constructor(){
        this.count = 0

@@ -4,23 +4,17 @@ import { observable,action,computed } from 'mobx';
 import TodoModel,{TodoModelProps} from '../TodoModels';
 
 class TodoStores {
-    @observable todos: TodoModel[]//Array<TodoModel>
-    @observable selectedFilter:string
-    
-    constructor(){
-        todos = [],
-        selectedFilter = 'ALL'
-    }
+    @observable todos = []
+    @observable selectedFilter = 'ALL'
     
     @action.bound
-    onAddTodo(title:string){
-        const todoObject : TodoModelProps = {
+    onAddTodo(title){
+        const todoObject = {
             id:Math.random().toString(),
             title,
             isCompleted:false
-        }
-        const todoInstance = new TodoModel(text)
-        this.todos.push(todoInstance);
+        };
+        this.todos.push(new TodoModel(todoObject));
         console.log(this.todos,"Stores -> onAddTodo");
     }
     

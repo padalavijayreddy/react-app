@@ -2,13 +2,6 @@
 
 import {observable,action} from 'mobx';
 
-export type EventProps={
-    id:string
-    name:string
-    address:string
-}
-
-
 class Event{
     @observable id;
     @observable name;
