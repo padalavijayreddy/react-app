@@ -1,8 +1,9 @@
 import React from "react";
-import CountryCard from './CountryCard.js';
 import { withRouter } from 'react-router-dom';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdError } from "react-icons/md";
+
+import CountryCard from './CountryCard';
 
 class Countries extends React.Component{
     renderCountries = (countryList) => {

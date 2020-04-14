@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import { observer, inject } from 'mobx-react'
+import { observer } from 'mobx-react'
 
-import stores from '../../stores'
-const counterStore = stores.counterStore
+import counterStore from '../../stores/CounterStore';
 
-type Props = {
+
+interface Props
+{
   initialCount: number
 }
 
+
 @observer
 class CounterPage extends Component<Props> {
-  functionCalling
 
   handleIncrement = () => {
     counterStore.incrementCounter()

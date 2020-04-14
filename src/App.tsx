@@ -11,23 +11,23 @@ import {
 
 
 import './App.css';
-import CounterPage from './components/CounterPage/index.js';
-import CarsList  from './components/assignemnt-2/index.js';
-import TodoList  from './components/todo-list/todosApp.js';
-import FormComponent  from './components/assignemnt-3/index.js';
-import CountriesDashboardApp from './components/assignment-4/index.js';
+import CounterPage from './components/CounterPage/index';
+import CarsList  from './components/assignemnt-2/index';
+import TodoList  from './components/todo-list/todosApp';
+import FormComponent  from './components/assignemnt-3/index';
+import CountriesDashboardApp from './components/assignment-4/index';
 import CountryDetails  from './components/assignment-4/CountryDetails';
-import Greetings   from './components/assignemnt-3/Greetings.js';
-import FavouriteDesert  from './components/assignemnt-3/FavouriteDesert.js';
-import VisitedCities  from './components/assignemnt-3/VisitedCities.js';
-import YourState  from './components/assignemnt-3/YourState.js';
-import DisabledButton from './components/assignemnt-3/DisabledButton.js';
-import Home  from './components/Home/Home.js';
-import EmojiGame from './components/assignment-5/emojiGame.js';
-import CounterApp from './components/assignement-6/index.js';
-import TodosList from './components/modxTodo-List/todoList.js';
-import TodoApp from './components/TodoApp/todoApp.js';
-import EventsApp from './components/EventsApp/index.js';
+import Greetings   from './components/assignemnt-3/Greetings';
+import FavouriteDesert  from './components/assignemnt-3/FavouriteDesert';
+import VisitedCities  from './components/assignemnt-3/VisitedCities';
+import YourState  from './components/assignemnt-3/YourState';
+import DisabledButton from './components/assignemnt-3/DisabledButton';
+import Home  from './components/Home/Home';
+import EmojiGame from './components/assignment-5/emojiGame';
+import CounterApp from './components/assignement-6';
+import TodosList from './components/modxTodo-List/todoList';
+import TodoApp from './components/TodoApp/todoApp';
+import EventsApp from './components/EventsApp/index';
 import ProviderExample from './components/ProviderExample';
 
 @observer class App extends React.Component {

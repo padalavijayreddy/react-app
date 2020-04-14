@@ -1,6 +1,7 @@
 import React from "react";
-import Countries from './Countries.js';
 import { withRouter } from 'react-router-dom';
+
+import Countries from './Countries';
 
 
 class FilterComponent extends React.Component{
