@@ -32,8 +32,11 @@ export default function Home(){
        {/*<div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/TodoApp">TodoApp</Link>
        </div>*/}
-       <div>
+       {/*<div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EventsApp">EventsApp</Link>
+       </div>*/}
+       <div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/GridMemoryGame">GridMemoryGame</Link>
        </div>
     </div>
     );

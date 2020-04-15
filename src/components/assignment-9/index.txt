@@ -1,0 +1,26 @@
+
+
+PLAN - A
+
+     *Step-1 
+         
+         Divide into multiple components 
+         
+            -> GridMemoryGame
+               -> GameField
+                  -> Cell
+               -> Level
+                  
+               -> Mode
+               
+               -> TopLevel
+               
+     *Step-2
+     
+         Build minimum UI using Props
+     
+     *Step-3
+     
+         Application Building
+           
+           -> 

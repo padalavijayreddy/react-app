@@ -5,11 +5,13 @@ let themeStyle = {
                 id:0,
                 name:'Light Mode',
                 style:'bg-white color-black',
+                eachCell:'bg-black'
             },
             dark  :{
                 id:1,
                 name:'Dark Mode',
-                style:'bg-black color-white'
+                style:'bg-black color-white',
+                eachCell:'bg-blue-700'
             }
         };
         

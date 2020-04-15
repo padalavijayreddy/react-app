@@ -29,6 +29,7 @@ import TodosList from './components/modxTodo-List/todoList';
 import TodoApp from './components/TodoApp/todoApp';
 import EventsApp from './components/EventsApp/index';
 import ProviderExample from './components/ProviderExample';
+import GridMemoryGame from './components/assignment-9/gridMemoryGame';
 
 @observer class App extends React.Component {
   
@@ -91,6 +92,9 @@ import ProviderExample from './components/ProviderExample';
           </Route>
           <Route exact path="/EventsApp">
             <EventsApp />
+          </Route>
+          <Route exact path="/GridMemoryGame">
+            <GridMemoryGame />
           </Route>
           <Route path='/'>
             <Home />

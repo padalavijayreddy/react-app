@@ -1,7 +1,7 @@
 //TodoStore
 
 import { observable,action,computed } from 'mobx';
-import TodoModel,{TodoModelProps} from '../TodoModels';
+import TodoModel from '../TodoModels';
 
 class TodoStores {
     @observable todos = []
