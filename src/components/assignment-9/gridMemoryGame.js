@@ -6,8 +6,8 @@ import GameResult from './gameResult.js';
 class GridMemoryGame extends React.Component{
     
     render(){
-        const { isGameCompleted } = gridStores;
-        console.log(isGameCompleted);
+        const { isGameCompleted,currentLevelGridCells } = gridStores;
+        console.log(currentLevelGridCells);
         return(
             <div>
               <header/>

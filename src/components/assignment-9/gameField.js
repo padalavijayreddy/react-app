@@ -1,10 +1,15 @@
 import React from 'react';
 
 class GameField extends React.Component{
+    
+    renderEachCell = () => {
+        
+    }
+    
     render(){
         return(
             <div>
-              GameField Component
+             hi
             </div>
             );
     }
