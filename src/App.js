@@ -94,7 +94,7 @@ import GridMemoryGame from './components/assignment-9/gridMemoryGame';
             <EventsApp />
           </Route>
           <Route exact path="/GridMemoryGame">
-            <GridMemoryGame />
+            <GridMemoryGame selectedTheme = {this.getCurrentTheme()} onChangeTheme = {this.onChangeTheme}/>
           </Route>
           <Route path='/'>
             <Home />

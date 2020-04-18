@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 const Button = styled.button(
     props => ({
-        border:(props.state === 'Dark Theme')?'1px solid black':'1px solid white'
+        border:(props.state === 'Dark Theme')?''&&'1px solid black':''&&'1px solid white'
     })
 );
 

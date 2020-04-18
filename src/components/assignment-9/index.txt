@@ -24,3 +24,16 @@ PLAN - A
          Application Building
            
            -> 
+           
+
+
+
+//Update Information 
+  -> Keep the Top level and ThemeStyle in the Local Storage
+  
+  -> change the 7 in json length
+  
+  -> Give the variables which we use multiple times
+  
+  -> Give Life Feature to the Game.
+           
