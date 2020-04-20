@@ -24,15 +24,18 @@ export default function Home(){
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/CountriesDashboardApp">CountriesDashboardApp</Link>
        </div>
        <div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/RestAPITodoApp">RestAPITodoApp</Link>
+       </div>
+       {/*<div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EmojiGame">EmojiGame</Link>
        </div>
        <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/ProviderExample">ProviderExample</Link>
        </div>
-       {/*<div>
+       <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/TodoApp">TodoApp</Link>
-       </div>*/}
-       {/*<div>
+       </div>
+       <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EventsApp">EventsApp</Link>
        </div>*/}
        <div>

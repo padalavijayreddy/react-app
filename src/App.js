@@ -30,6 +30,7 @@ import TodoApp from './components/TodoApp/todoApp';
 import EventsApp from './components/EventsApp/index';
 import ProviderExample from './components/ProviderExample';
 import GridMemoryGame from './components/assignment-9/gridMemoryGame';
+import RestAPITodoApp from './components/assignment-10/todoApp';
 
 @observer class App extends React.Component {
   
@@ -95,6 +96,9 @@ import GridMemoryGame from './components/assignment-9/gridMemoryGame';
           </Route>
           <Route exact path="/GridMemoryGame">
             <GridMemoryGame selectedTheme = {this.getCurrentTheme()} onChangeTheme = {this.onChangeTheme}/>
+          </Route>
+          <Route exact path="/RestAPITodoApp">
+            <RestAPITodoApp />
           </Route>
           <Route path='/'>
             <Home />

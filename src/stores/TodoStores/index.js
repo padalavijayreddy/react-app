@@ -8,11 +8,17 @@ class TodoStores {
     @observable selectedFilter = 'ALL'
     
     @action.bound
+    addDataToTodos(jsonDataList){
+        this.todos = this.todos.concat(jsonDataList.map((eachObject)=> new TodoModel(eachObject)));
+
+    }
+    
+    @action.bound
     onAddTodo(title){
         const todoObject = {
             id:Math.random().toString(),
             title,
-            isCompleted:false
+            completed:false
         };
         this.todos.push(new TodoModel(todoObject));
         console.log(this.todos,"Stores -> onAddTodo");
@@ -21,7 +27,7 @@ class TodoStores {
     
     @action.bound
     onRemoveTodo(id) {
-        this.todos = this.todos.filter(items => items.id!==id);
+        this.todos = this.todos.filter(items => items.id !==id);
     }
     
     @action.bound
@@ -49,7 +55,6 @@ class TodoStores {
     get activeTodosCount(){
         return this.todos.filter(todo => !todo.isCompleted).length;
     }
-    
     
 }
 

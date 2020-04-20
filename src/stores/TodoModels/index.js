@@ -9,17 +9,15 @@ class TodoModel {
     constructor(text){
         this.id = text.id;
         this.title = text.title;
-        this.isCompleted = text.isCompleted;
+        this.isCompleted = text.completed;
     }
     
-    @action.bound
-    onCompleteTodo(){
+    onCompleteTodo = () =>{
         this.isCompleted=!this.isCompleted;
     }
     
-    @action.bound
-    onUpdateTodoTitle(changedText){
-        this.title= changedText;
+    onUpdateTodoTitle = (changedText) => {
+        this.title = changedText;
     }
 }
 
