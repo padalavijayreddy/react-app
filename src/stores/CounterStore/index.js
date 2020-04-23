@@ -45,5 +45,4 @@ class CounterStore {
     }
 }
 
-const counterStore = new CounterStore();
-export default counterStore;
+export default CounterStore;

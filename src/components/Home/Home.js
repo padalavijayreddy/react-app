@@ -26,7 +26,13 @@ export default function Home(){
        <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/RestAPITodoApp">RestAPITodoApp</Link>
        </div>
+       <div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/LoginPage">LoginPage</Link>
+       </div>
        {/*<div>
+         <Link style={{color:'inherit',textDecoration:'inherit'}} to="/UsersPage">UsersPage</Link>
+       </div>
+       <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EmojiGame">EmojiGame</Link>
        </div>
        <div>
@@ -37,10 +43,11 @@ export default function Home(){
        </div>
        <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/EventsApp">EventsApp</Link>
-       </div>*/}
+       </div>
        <div>
          <Link style={{color:'inherit',textDecoration:'inherit'}} to="/GridMemoryGame">GridMemoryGame</Link>
-       </div>
+       </div>*/}
+       
     </div>
     );
 }

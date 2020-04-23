@@ -1,6 +1,6 @@
 import React from "react";
 import themeStore from './stores/ThemeStore';
-import {observer} from 'mobx-react';
+import { observer,Provider } from 'mobx-react';
 //import {configure} from 'mobx';
 import {
   BrowserRouter as Router,
@@ -30,9 +30,13 @@ import TodoApp from './components/TodoApp/todoApp';
 import EventsApp from './components/EventsApp/index';
 import ProviderExample from './components/ProviderExample';
 import GridMemoryGame from './components/assignment-9/gridMemoryGame';
-import RestAPITodoApp from './components/assignment-10/todoApp';
+import RestAPITodoApp from './components/assignment-10/TodoApp/todoApp';
+import UsersPage from './components/UsersPage';
+import stores from './stores';
+import LoginPage from './components/E-CommerceWebsite/LoginPage/loginPage';
 
-@observer class App extends React.Component {
+@observer 
+class App extends React.Component {
   
   getCurrentTheme = () => {
         return themeStore.theme;
@@ -44,7 +48,8 @@ import RestAPITodoApp from './components/assignment-10/todoApp';
  
   render(){
     return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Provider {...stores} >
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/CounterApp">
             <CounterApp />
@@ -97,14 +102,15 @@ import RestAPITodoApp from './components/assignment-10/todoApp';
           <Route exact path="/GridMemoryGame">
             <GridMemoryGame selectedTheme = {this.getCurrentTheme()} onChangeTheme = {this.onChangeTheme}/>
           </Route>
-          <Route exact path="/RestAPITodoApp">
-            <RestAPITodoApp />
-          </Route>
+          <Route exact path="/RestAPITodoApp" component={RestAPITodoApp}/>
+          <Route exact path="/UsersPage" component={UsersPage}/>
+          <Route exact path="/LoginPage" component={LoginPage}/>
           <Route path='/'>
             <Home />
           </Route>
         </Switch>
-    </Router>
+      </Router>
+    </Provider>
   );
  }
 }
