@@ -2,6 +2,7 @@ import React from 'react';
 import { observable } from 'mobx';
 import { observer,inject,Provider } from 'mobx-react';
 
+
 @inject('name')
 @observer
 class B extends React.Component{

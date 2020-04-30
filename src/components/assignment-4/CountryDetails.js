@@ -1,64 +1,64 @@
 import React from "react";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { FiArrowLeft } from "react-icons/fi";
-import { observer }  from 'mobx-react';
+import { observer } from 'mobx-react';
 
-import  Header  from './Header';
+import Header from './Header';
 import themeStore from '../../stores/ThemeStore/index';
 
 
 @observer
-class CountryDetails extends React.Component{
- 
-     state = {
-      countryDetails:[]
-     }
-      
-     async  getCountries ()  {
-      let data= await fetch('https://restcountries.eu/rest/v2/all');
-      let jsonData=await data.json();
-      let filteredCountries = jsonData.filter(eachObject=>{
-       return eachObject.alpha3Code === this.props.match.params.countryId;
-      });
-     
-      this.setState({
-       countryDetails:filteredCountries,
-      });
-     }
-    
-     componentDidMount = () => {
-        this.getCountries();
-     }
-     
-     languagesNamesList = () => {
-       return this.state.countryDetails[0].languages.map(eachLanguage => (eachLanguage.name));
-     }
-     
-     renderCountryPage = (event) => {
-      this.props.history.push(`/CountriesDashboardApp/${event.target.innerHTML}`);
-      this.getCountries();
-     }
-     
-     bordersList = () => {
-      return this.state.countryDetails[0].borders.map(country => {
-         return<button className="borders-button" onClick={this.renderCountryPage}>{country}</button>;
-      });
-     }
-     
-     goBack = () =>{
-      this.props.history.push('/CountriesDashboardApp/');
-     }
-     
-     render(){
-      const { selectedTheme,onChangeTheme } = this.props;
-      console.log(this.props);
-      if(this.state.countryDetails.length>0){
-       //console.log(this.state.countryDetails[0].borders);
-       const languages=this.languagesNamesList();
-       const borders = this.bordersList();
-       console.log(borders);
-        return(
-        <div className="bg-gray-400">
+class CountryDetails extends React.Component {
+
+ state = {
+  countryDetails: []
+ }
+
+ async getCountries() {
+  let data = await fetch('https://restcountries.eu/rest/v2/all');
+  let jsonData = await data.json();
+  let filteredCountries = jsonData.filter(eachObject => {
+   return eachObject.alpha3Code === this.props.match.params.countryId;
+  });
+
+  this.setState({
+   countryDetails: filteredCountries,
+  });
+ }
+
+ componentDidMount = () => {
+  this.getCountries();
+ }
+
+ languagesNamesList = () => {
+  return this.state.countryDetails[0].languages.map(eachLanguage => (eachLanguage.name));
+ }
+
+ renderCountryPage = (event) => {
+  this.props.history.push(`/CountriesDashboardApp/${event.target.innerHTML}`);
+  this.getCountries();
+ }
+
+ bordersList = () => {
+  return this.state.countryDetails[0].borders.map(country => {
+   return <button className="borders-button" onClick={this.renderCountryPage}>{country}</button>;
+  });
+ }
+
+ goBack = () => {
+  this.props.history.push('/CountriesDashboardApp/');
+ }
+
+ render() {
+  const { selectedTheme, onChangeTheme } = this.props;
+  console.log(this.props);
+  if (this.state.countryDetails.length > 0) {
+   //console.log(this.state.countryDetails[0].borders);
+   const languages = this.languagesNamesList();
+   const borders = this.bordersList();
+   console.log(borders);
+   return (
+    <div className="bg-gray-400">
              <div>
                 <Header selectTheme = {selectedTheme} changeTheme = {onChangeTheme}/>
                 <div className={selectedTheme.style} className="h-1/4 w-full p-5 flex flex-col items-start justify-start">
@@ -85,12 +85,12 @@ class CountryDetails extends React.Component{
                 </div>
              </div>
        </div>
-      );
-      }
-      else{
-       return <div></div>;
-      }
-     }
+   );
+  }
+  else {
+   return <div></div>;
+  }
+ }
 }
 
-export default withRouter(CountryDetails) ;
+export default withRouter(CountryDetails);

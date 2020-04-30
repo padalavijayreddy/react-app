@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdSearch } from "react-icons/md";
-import { observer }  from 'mobx-react';
+import { observer } from 'mobx-react';
 
 import themeStore from '../../stores/ThemeStore/index';
 

@@ -1,72 +1,72 @@
 /*global fetch*/
 
 import React from "react";
-import { observer }  from 'mobx-react';
+import { observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 
 import './index.css';
-import  CountriesFilterBar  from './CountriesFilterBar';
-import  FilterComponent  from './FilterComponent';
+import CountriesFilterBar from './CountriesFilterBar';
+import FilterComponent from './FilterComponent';
 import Header from './Header';
 
 import themeStore from '../../stores/ThemeStore/index';
 
 @observer
-class CountriesDashboardApp extends React.Component{
-    
+class CountriesDashboardApp extends React.Component {
+
     state = {
-        countries : [],
-        searchText:'',
-        selectedRegion:'All',
+        countries: [],
+        searchText: '',
+        selectedRegion: 'All',
     }
-    
-    async  getCountries ()  {
-      let data= await fetch('https://restcountries.eu/rest/v2/all');
-      let jsonData=await data.json();
-       this.setState({
-          countries:jsonData
-      });
+
+    async getCountries() {
+        let data = await fetch('https://restcountries.eu/rest/v2/all');
+        let jsonData = await data.json();
+        this.setState({
+            countries: jsonData
+        });
     }
-    
+
     getCurrentTheme = () => {
         return themeStore.selectedTheme;
     }
-  
+
     setCurrentTheme = (theme) => {
         themeStore.setCurrentTheme(theme);
     }
-    
+
     componentDidMount = () => {
         this.getCountries();
     }
-    
+
     onChangeSearchText = (text) => {
         this.setState({
-            searchText:text,
+            searchText: text,
         });
     }
-    
+
     onChangeSelectedRegion = (event) => {
         this.setState({
-            selectedRegion:event.target.value,
+            selectedRegion: event.target.value,
         });
     }
-    
+
     displayCountries = () => {
         return (
-          <FilterComponent countriesList={this.state.countries} searchText = {this.state.searchText} selectedRegion={this.state.selectedRegion}/>
+            <FilterComponent countriesList={this.state.countries} searchText = {this.state.searchText} selectedRegion={this.state.selectedRegion}/>
         );
     }
-    
-    goBack = () =>{
-      this.props.history.goBack();
+
+    goBack = () => {
+        this.props.history.goBack();
     }
-    
-    render(){
+
+    render() {
         //const themeStyles = themeStore.themeStyle[themeStore.theme];
         //console.log(themeStyles);
         console.log(this.props);
-        return(
+        return (
             <div className={this.props.selectedTheme.style}>
               <Header selectTheme = {this.props.selectedTheme} changeTheme = {this.props.onChangeTheme}/>
               <CountriesFilterBar 
@@ -79,9 +79,9 @@ class CountriesDashboardApp extends React.Component{
                   />
               {this.displayCountries()}
             </div>
-            );
+        );
     }
-    
+
 }
 
 

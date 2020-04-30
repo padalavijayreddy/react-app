@@ -12,22 +12,3 @@ const Header = styled.h1`{
 
 
 export { TodoApp,TodoDivision,Header};
-
-
-
-// const Button = styled.button`{
-//     ${tw`text-lg`}
-//     background-color:${props=>props.state};
-//     width:${props=>props.width.width};
-//     height:${props=>props.height.height};
-//     transition: background 0.5s;
-// }`;
-// .heading {
-//     font-size: 140px;
-//     font-weight: 200;
-//     font-family: Helvetica neue;
-//     color: #b83f45;
-//     display: flex;
-//     align-items: center;
-//     height: 20%;
-// }

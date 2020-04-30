@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link,Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './Home.css';
 
 class Home extends React.Component {
@@ -7,18 +7,18 @@ class Home extends React.Component {
         return (
             <Redirect
             to ={{
-                pathname:'/CountriesDashboardApp',
+                pathname:'/SignInPage',
             }}
             />
         );
     }
-    
-    render(){
-        // if(true) {
-        //     return this.gotoGridScreenIfLoggedIn()
-        // }
-        return(
-        <div className="Home-navigation">
+
+    render() {
+        if (true) {
+            return this.gotoGridScreenIfLoggedIn();
+        }
+        return (
+            <div className="Home-navigation">
             <h4>
                 HOME
             </h4>
@@ -32,7 +32,7 @@ class Home extends React.Component {
                 <Link style={{color:'inherit',textDecoration:'inherit'}} to="/TodoList">TodoList</Link>
             </div>
             <div>
-                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/FormComponent">FormComponent</Link>
+                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/formComponent">FormComponent</Link>
             </div>
             <div>
                 <Link style={{color:'inherit',textDecoration:'inherit'}} to="/CountriesDashboardApp">CountriesDashboardApp</Link>
@@ -42,6 +42,12 @@ class Home extends React.Component {
             </div>
             <div>
                 <Link style={{color:'inherit',textDecoration:'inherit'}} to="/LoginPage">LoginPage</Link>
+            </div>
+            <div>
+                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/SignInPage">SignInPage</Link>
+            </div>
+            <div>
+                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/ProductPage">ProductPage</Link>
             </div>
          {/*<div>
                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/UsersPage">UsersPage</Link>

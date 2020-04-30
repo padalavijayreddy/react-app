@@ -1,28 +1,29 @@
 import React from "react";
 import themeStore from './stores/ThemeStore';
-import { observer,Provider } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 //import {configure} from 'mobx';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+}
+from "react-router-dom";
 
 
 import './App.css';
 import CounterPage from './components/CounterPage/index';
-import CarsList  from './components/assignemnt-2/index';
-import TodoList  from './components/todo-list/todosApp';
-import FormComponent  from './components/assignemnt-3/index';
+import CarsList from './components/assignemnt-2/index';
+import TodoList from './components/todo-list/todosApp';
+import FormComponent from './components/assignemnt-3/index';
 import CountriesDashboardApp from './components/assignment-4/index';
-import CountryDetails  from './components/assignment-4/CountryDetails';
-import Greetings   from './components/assignemnt-3/Greetings';
-import FavouriteDesert  from './components/assignemnt-3/FavouriteDesert';
-import VisitedCities  from './components/assignemnt-3/VisitedCities';
-import YourState  from './components/assignemnt-3/YourState';
+import CountryDetails from './components/assignment-4/CountryDetails';
+import Greetings from './components/assignemnt-3/Greetings';
+import FavouriteDesert from './components/assignemnt-3/FavouriteDesert';
+import VisitedCities from './components/assignemnt-3/VisitedCities';
+import YourState from './components/assignemnt-3/YourState';
 import DisabledButton from './components/assignemnt-3/DisabledButton';
-import Home  from './components/Home/Home';
+import Home from './components/Home/Home';
 import EmojiGame from './components/assignment-5/emojiGame';
 import CounterApp from './components/assignement-6';
 import TodosList from './components/modxTodo-List/todoList';
@@ -33,22 +34,26 @@ import GridMemoryGame from './components/assignment-9/gridMemoryGame';
 import RestAPITodoApp from './components/assignment-10/TodoApp/todoApp';
 import UsersPage from './components/UsersPage';
 import stores from './stores';
-import LoginPage from './components/E-CommerceWebsite/LoginPage/loginPage';
+import LoginPage from './components/LoginPage/loginPage';
+import SignInPage from './SignInPage/components/SignInPage';
+import ProductPage from './ProductPage/components/ProductPage';
+import ProductPageStores from './ProductPage/stores';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
-@observer 
+@observer
 class App extends React.Component {
-  
+
   getCurrentTheme = () => {
-        return themeStore.theme;
+    return themeStore.theme;
   }
-    
-  onChangeTheme=()=>{
+
+  onChangeTheme = () => {
     themeStore.setCurrentTheme(themeStore.theme);
   }
- 
-  render(){
+
+  render() {
     return (
-    <Provider {...stores} >
+      <Provider {...stores} {...ProductPageStores} >
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/CounterApp">
@@ -66,6 +71,7 @@ class App extends React.Component {
           <Route exact path="/FormComponent/Greetings">
             <Greetings />
           </Route>
+          
           <Route exact path="/FormComponent/FavouriteDesert">
             <FavouriteDesert desertList={['Vanila','ButterScotch','Chocolate','Strawberry','Gulab Jam']} />
           </Route>
@@ -105,14 +111,16 @@ class App extends React.Component {
           <Route exact path="/RestAPITodoApp" component={RestAPITodoApp}/>
           <Route exact path="/UsersPage" component={UsersPage}/>
           <Route exact path="/LoginPage" component={LoginPage}/>
+          <Route exact path="/SignInPage" component={SignInPage}/>
+          <ProtectedRoute exact path="/ProductPage" component={ProductPage}/>
           <Route path='/'>
             <Home />
           </Route>
         </Switch>
       </Router>
     </Provider>
-  );
- }
+    );
+  }
 }
 
 export default (App);
