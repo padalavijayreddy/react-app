@@ -1,6 +1,6 @@
 import React from 'react';
 import { observable } from 'mobx';
-import CartItem from '../CartItem';
+import { CartItem } from './CartItem';
 import { observer } from 'mobx-react';
 import { CartListDiv, AddToCartP } from './CartListStyle';
 

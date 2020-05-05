@@ -2,24 +2,22 @@ import React from 'react';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import productStore from '../../stores/ProductStore';
-import authStore from '../../../SignInPage/stores/AuthenticationStore';
+// import authStore from '../../../SignInPage/stores/AuthenticationStore';
 import SignInPage from '../../../SignInPage/components/SignInPage';
-import SizeFilter from '../SizeFilter';
-import ProductList from '../ProductList';
-import ProductSort from '../ProductSort';
+import { SizeFilter } from '../SizeFilter';
+import { ProductList } from '../ProductList';
+import { ProductSort } from '../ProductSort';
 import LoadingWrapperWithFailure from '../../../components/common/LoadingWrapperWithFailure';
 import NoDataView from '../../../components/common/NoDataView';
-import ProductCart from '../ProductCart';
+import { ProductCart } from '../ProductCart';
 import { SearchBar } from '../SearchBar';
 import { MainDiv, ProductPageHeader, Cookieconsent, SubProduct, ProductPageDetails, SignOutbutton, CartImage, CartImageP, SortAndListRendering } from './productPageStyle';
 import cookieconsent from 'cookieconsent';
+import { SIGN_IN_PATH } from '../../../SignInPage/constants/RouteConstants';
 
 
 
-
-
-
-@inject('cartStore')
+@inject('cartStore', 'authStore')
 @observer
 class ProductPage extends React.Component {
     @observable shouldDisplayCart;
@@ -40,8 +38,9 @@ class ProductPage extends React.Component {
     }
 
     signOut = () => {
+        const { authStore } = this.props;
         authStore.userSignOut();
-        this.props.history.replace('/SignInPage');
+        this.props.history.replace(SIGN_IN_PATH);
     }
 
     renderProductList = observer(({}) => {
@@ -92,9 +91,9 @@ class ProductPage extends React.Component {
             <MainDiv>
                 <ProductCart {...{shouldDisplayCart,toggleDisplayCart,renderCartImage,cartStore}}/>
                 <ProductPageHeader>
-                        <SignOutbutton onClick = { this.signOut }>Sign Out</SignOutbutton>
+                        <SignOutbutton data-testid='sign-out-button' onClick = { this.signOut }>Sign Out</SignOutbutton>
                         <SearchBar onChangeSearchText = {onChangeSearchText}/>
-                        <CartImage onClick = { this.toggleDisplayCart }>
+                        <CartImage data-testid='cart-open-button' onClick = { this.toggleDisplayCart }>
                             <CartImageP>{noOfProductsInCart}</CartImageP>
                             {this.renderCartImage()}
                         </CartImage>

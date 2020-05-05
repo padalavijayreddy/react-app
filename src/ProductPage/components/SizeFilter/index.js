@@ -1,1 +1,1 @@
-export { SizeFilter as default } from './sizeFilter';
+export { SizeFilter } from './sizeFilter';

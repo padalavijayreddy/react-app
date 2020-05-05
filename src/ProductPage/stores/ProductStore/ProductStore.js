@@ -96,7 +96,7 @@ class ProductStore {
         data = data.filter(product => filterTitles(product.title));
 
         if (sortBy == "SELECT") return data;
-        return (data.sort((a, b) => (sortBy === 'Highest to lowest') ? ((a.price < b.price) ? 1 : -1) : (a.price > b.price) ? 1 : -1));
+        return (data.sort((a, b) => (sortBy === 'DESCENDING') ? ((a.price < b.price) ? 1 : -1) : (a.price > b.price) ? 1 : -1));
     }
 
     @computed

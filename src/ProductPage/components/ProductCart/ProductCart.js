@@ -1,8 +1,8 @@
 import React from 'react';
 import { observable } from 'mobx';
-import CartList from '../CartList';
-import SubTotal from '../SubTotal';
-import CheckoutButton from '../CheckoutButton';
+import { CartList } from '../CartList';
+import { SubTotal } from '../SubTotal';
+import { CheckoutButton } from '../CheckoutButton';
 import { observer } from 'mobx-react';
 import { ProductCartDiv, DeleteButton, ProductCartMainDiv, ProductCartSubDiv, CartImage, CartImageP, CartP, ProductCartFooter } from './ProductCartStyle';
 
@@ -19,7 +19,7 @@ class ProductCart extends React.Component {
         const { cartProductList, totalCartAmount, noOfProductsInCart, onRemoveCartItem, getProductDetailsById, clearCart } = cartStore;
         return (
             <ProductCartDiv {...{shouldDisplayCart}}>
-                    <DeleteButton onClick={this.hideCart}>X</DeleteButton>
+                    <DeleteButton data-testid='cart-close-button' onClick={this.hideCart}>X</DeleteButton>
                     <ProductCartMainDiv>
                       <ProductCartSubDiv>
                         <CartImage>

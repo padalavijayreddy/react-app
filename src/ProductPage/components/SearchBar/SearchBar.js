@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <form className="h-auto flex justify-center items-center border-gray-600 border-solid border-2 w-1/4" onSubmit={this.handleSubmit} >
+            <form className="h-auto flex justify-center items-center border border-transparent hover:border-gray-600  w-1/4" onSubmit={this.handleSubmit} >
                 <label className="flex justify-center items-center text-lg"><MdSearch/></label>
                 <input onChange={this.handleSearchText} className="search-button" type="text" placeholder="Search with Name.."/>
             </form>

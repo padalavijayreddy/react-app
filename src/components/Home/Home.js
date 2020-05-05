@@ -1,22 +1,12 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { PRODUCT_PAGE_PATH } from '../../ProductPage/constants/RouteConstants';
+import { SIGN_IN_PATH } from '../../SignInPage/constants/RouteConstants';
 import './Home.css';
 
 class Home extends React.Component {
-    gotoGridScreenIfLoggedIn = () => {
-        return (
-            <Redirect
-            to ={{
-                pathname:'/SignInPage',
-            }}
-            />
-        );
-    }
 
     render() {
-        if (true) {
-            return this.gotoGridScreenIfLoggedIn();
-        }
         return (
             <div className="Home-navigation">
             <h4>
@@ -44,10 +34,7 @@ class Home extends React.Component {
                 <Link style={{color:'inherit',textDecoration:'inherit'}} to="/LoginPage">LoginPage</Link>
             </div>
             <div>
-                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/SignInPage">SignInPage</Link>
-            </div>
-            <div>
-                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/ProductPage">ProductPage</Link>
+                <Link style={{color:'inherit',textDecoration:'inherit'}} to={SIGN_IN_PATH}>ECommercePage</Link>
             </div>
          {/*<div>
                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/UsersPage">UsersPage</Link>

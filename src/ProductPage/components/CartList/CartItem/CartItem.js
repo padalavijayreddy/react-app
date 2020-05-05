@@ -26,7 +26,7 @@ class CartItem extends React.Component {
                         </ProductDetails>
                     </SubDiv>    
                         <SubPartDiv>
-                            <button id={cartItem.productId} onClick={this.onRemoveCartItem}>X</button>
+                            <button data-testid='remove-cart-item' id={cartItem.productId} onClick={this.onRemoveCartItem}>X</button>
                             <PriceP>{product.price}</PriceP>
                         </SubPartDiv>
             </CartDiv>

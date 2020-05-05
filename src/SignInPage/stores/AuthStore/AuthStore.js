@@ -1,17 +1,16 @@
 import { observable, action } from 'mobx';
 import { API_INITIAL } from '@ib/api-constants';
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise';
-import AuthService from '../../services/AuthenticationService';
 import { setAccessToken, clearUserSession, getAccessToken, ACCESS_TOKEN } from '../../utils/StorageUtils';
 
 class AuthStore {
 
     @observable getUserSignInAPIStatus
     @observable getUserSignInAPIError
-    authService
+    AuthAPI
 
-    constructor(authService) {
-        this.authService = authService;
+    constructor(AuthAPI) {
+        this.AuthAPI = AuthAPI;
         this.init();
     }
 
@@ -30,12 +29,18 @@ class AuthStore {
 
 
     @action.bound
-    userSignIn() {
-        const signInPromise = this.authService.signInAPI();
-        console.log('promise', signInPromise);
+    userSignIn(requestObject, onSuccess, onFailure) {
+        this.userData = requestObject;
+        const signInPromise = this.AuthAPI.signInAPI();
         return bindPromiseWithOnSuccess(signInPromise)
-            .to(this.setGetUserSignInAPIStatus, this.setUserSignInAPIResponse)
-            .catch(this.setGetUserSignInAPIError);
+            .to(this.setGetUserSignInAPIStatus, (response) => {
+                this.setUserSignInAPIResponse(response);
+                onSuccess();
+            })
+            .catch(error => {
+                this.setGetUserSignInAPIError(error);
+                onFailure();
+            });
     }
 
 
@@ -53,6 +58,7 @@ class AuthStore {
 
     @action.bound
     setUserSignInAPIResponse(signInResponse) {
+        const { username, password } = this.userData;
         signInResponse.forEach(token => setAccessToken(token.access_token));
         console.log(getAccessToken(ACCESS_TOKEN));
     }
@@ -63,6 +69,4 @@ class AuthStore {
     }
 }
 
-const authService = new AuthService();
-const authStore = new AuthStore(authService);
-export { authStore };
+export { AuthStore };

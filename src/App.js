@@ -35,10 +35,11 @@ import RestAPITodoApp from './components/assignment-10/TodoApp/todoApp';
 import UsersPage from './components/UsersPage';
 import stores from './stores';
 import LoginPage from './components/LoginPage/loginPage';
-import SignInPage from './SignInPage/components/SignInPage';
-import ProductPage from './ProductPage/components/ProductPage';
 import ProductPageStores from './ProductPage/stores';
-import { ProtectedRoute } from './components/ProtectedRoute';
+
+import { AuthRoutes } from './SignInPage/routes';
+import { ProductRoutes } from './ProductPage/routes';
+
 
 @observer
 class App extends React.Component {
@@ -53,7 +54,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Provider {...stores} {...ProductPageStores} >
+      <Provider {...stores} >
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/CounterApp">
@@ -71,7 +72,6 @@ class App extends React.Component {
           <Route exact path="/FormComponent/Greetings">
             <Greetings />
           </Route>
-          
           <Route exact path="/FormComponent/FavouriteDesert">
             <FavouriteDesert desertList={['Vanila','ButterScotch','Chocolate','Strawberry','Gulab Jam']} />
           </Route>
@@ -111,8 +111,8 @@ class App extends React.Component {
           <Route exact path="/RestAPITodoApp" component={RestAPITodoApp}/>
           <Route exact path="/UsersPage" component={UsersPage}/>
           <Route exact path="/LoginPage" component={LoginPage}/>
-          <Route exact path="/SignInPage" component={SignInPage}/>
-          <ProtectedRoute exact path="/ProductPage" component={ProductPage}/>
+          {AuthRoutes}
+          {ProductRoutes}
           <Route path='/'>
             <Home />
           </Route>

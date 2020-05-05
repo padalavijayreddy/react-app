@@ -2,7 +2,7 @@ import { create } from 'apisauce';
 import { networkCallWithApisauce } from '../../utils/APIUtils';
 import { apiMethods } from '../../constants/APIConstants';
 
-class AuthService {
+class AuthAPI {
     api
     constructor() {
         this.api = create({
@@ -15,4 +15,4 @@ class AuthService {
     }
 }
 
-export { AuthService };
+export { AuthAPI };

@@ -1,1 +1,1 @@
-export { SubTotal as default } from './SubTotal';
+export { SubTotal } from './SubTotal';
