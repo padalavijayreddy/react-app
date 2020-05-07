@@ -3,7 +3,7 @@ import { networkCallWithApisauce } from '../../utils/APIUtils';
 import { apiMethods } from '../../constants/APIConstants';
 
 
-class ProductService {
+class ProductAPI {
     api
     constructor() {
         this.api = create({
@@ -16,4 +16,4 @@ class ProductService {
     }
 }
 
-export default ProductService;
+export { ProductAPI };

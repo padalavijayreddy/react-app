@@ -1,8 +1,24 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { observable } from 'mobx';
+import { observable, autorun } from 'mobx';
 import tw from 'tailwind.macro';
 import styled from '@emotion/styled';
+
+let message = observable({
+    title: "Foo",
+    author: {
+        name: "Michel"
+    },
+    likes: ["John", "Sara"]
+});
+
+const { author } = message
+autorun(() => {
+    console.log(author.name);
+});
+message.author.name = 'vijay';
+message.author = { name: 'nene' };
+
 
 @observer
 class LoginPage extends React.Component {
@@ -12,9 +28,20 @@ class LoginPage extends React.Component {
     @observable showPasswordError
     @observable showUsernameError
 
+    changeItems() {
+        const { name } = message.author;
+        if (name === 'Foo')
+            message.author.name = "Vijay";
+        else if (name === 'Vijay')
+            message.author.name = "Booo";
+        else
+            message.author.name = "Foo";
+    }
+
     render() {
         return (
-            <div className="flex justify-center items-center w-screen h-screen">    
+            <div onClick={this.changeItems} className="flex justify-center items-center w-screen h-screen">
+            <div>{message.author.name}</div>
             <div className="w-full max-w-xs">
                 <div className="block text-gray-700 text-sm font-bold mb-2">LOGIN FORM</div>
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

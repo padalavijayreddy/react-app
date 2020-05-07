@@ -12,10 +12,12 @@ class SignInPage extends React.Component {
         const {
             onChangeUsername,
             onChangePassword,
+            onEnterKeyPress,
             username,
             password,
             onSubmit,
-            errorMessage
+            errorMessage,
+            isLoading
         } = this.props;
         return (
             <MainDiv>    
@@ -28,11 +30,11 @@ class SignInPage extends React.Component {
                     </UserInputDiv>
                     <PasswordInputDiv>
                         <PasswordLabel>Password</PasswordLabel>
-                        <PasswordInput onChange={onChangePassword} value={ password } id="password" type="password" placeholder="Password"/>
+                        <PasswordInput onChange={onChangePassword} value={ password } id="password" type="password" placeholder="Password" onKeyPress={onEnterKeyPress}/>
                     </PasswordInputDiv>
                     <SubmitButton>
                        <div>
-                        <Button data-testid='sign-in-button' onClick={onSubmit} type="button">Submit</Button>
+                        <Button disabled={isLoading} data-testid='sign-in-button' onClick={onSubmit} type="button" onKeyPress={onEnterKeyPress}>{(isLoading)?"Loading...":"Sign in"}</Button>
                         <ErrorMessage>{errorMessage }</ErrorMessage>
                        </div>    
                         <Forgot href="#">Forgot Password?</Forgot>

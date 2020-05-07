@@ -39,7 +39,7 @@ class AuthStore {
             })
             .catch(error => {
                 this.setGetUserSignInAPIError(error);
-                onFailure();
+
             });
     }
 
@@ -53,6 +53,7 @@ class AuthStore {
     @action.bound
     setGetUserSignInAPIError(apiError) {
         this.getUserSignInAPIError = apiError;
+        console.log('errorrrrrrrrrrrrrr');
     }
 
 

@@ -7,12 +7,12 @@ class CartStore {
     productStore;
 
     constructor(productStore) {
+        this.productStore = productStore;
         this.init(productStore);
     }
 
     @action.bound
-    init(productStore) {
-        this.productStore = productStore;
+    init() {
         this.cartProductList = new Map();
     }
 
@@ -41,7 +41,7 @@ class CartStore {
 
     @action.bound
     clearCart() {
-        this.cartProductList = new Map();
+        this.init();
     }
 
 

@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 import { SignInPage } from ".";
 
-
-describe("Signinform", () => {
-    it("should render typed username", () => {
+describe("ProductPage", () => {
+    it("Should render the ", () => {
         const userName = "test-user";
         const { getByPlaceholderText } = render(
             <SignInPage username={userName} onChangeUsername={() => {}} />

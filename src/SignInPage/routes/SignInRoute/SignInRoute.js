@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { observable, action } from 'mobx';
-import { API_FETCHING } from '../../../utils/APIUtils';
+import { API_FETCHING } from '@ib/api-constants';
 import { PRODUCT_PAGE_PATH } from '../../../ProductPage/constants/RouteConstants';
 import { SignInPage } from '../../components/SignInPage';
 import { isLoggedIn } from '../../utils/AuthUtils';
@@ -21,7 +21,6 @@ class SignInRoute extends React.Component {
         this.init();
     }
 
-
     @action.bound
     init() {
         this.password = '';
@@ -39,6 +38,13 @@ class SignInRoute extends React.Component {
     onChangePassword(event) {
         this.password = event.target.value;
     }
+
+    @action.bound
+    onEnterKeyPress = e => {
+        if (e.key === "Enter") {
+            this.onSubmit(e);
+        }
+    };
 
     @action.bound
     onSignInSuccess() {
@@ -78,22 +84,26 @@ class SignInRoute extends React.Component {
         if (isLoggedIn()) {
             return this.renderProductsPage();
         }
+        const { authStore } = this.props;
         const {
             props: {},
             onChangeUsername,
             onChangePassword,
+            onEnterKeyPress,
             username,
             password,
             onSubmit,
             errorMessage
-        } = this;
+        } = this, isLoading = (authStore.getUserSignInAPIStatus === API_FETCHING);
         return (<SignInPage
         {...{
         onChangeUsername,
         onChangePassword,
+        onEnterKeyPress,
         username,
         password,
         onSubmit,
+        isLoading,
         errorMessage}}
         />);
     }

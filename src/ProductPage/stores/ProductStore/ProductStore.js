@@ -7,13 +7,13 @@ class ProductStore {
     @observable productList
     @observable getProductListAPIStatus
     @observable getProductListAPIError
-    productsService
+    ProductAPI
     @observable sizeFilter
     @observable sortBy
     @observable searchText
 
-    constructor(productService) {
-        this.productService = productService;
+    constructor(ProductAPI) {
+        this.ProductAPI = ProductAPI;
         this.init();
     }
 
@@ -35,7 +35,7 @@ class ProductStore {
 
     @action.bound
     getProductList() {
-        const productPromise = this.productService.getProductsAPI();
+        const productPromise = this.ProductAPI.getProductsAPI();
         return bindPromiseWithOnSuccess(productPromise)
             .to(this.setGetProductListAPIStatus, this.setProductListResponse)
             .catch(this.setGetProductListAPIError);
