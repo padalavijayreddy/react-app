@@ -1,28 +1,30 @@
-import getData from '@ib/api'
+import getData from '@ib/api';
 
-import { apiMethods } from '../constants/APIConstants'
+import { apiMethods } from '../constants/APIConstants';
 
-export const networkCallWithApisauce = async (
+export const networkCallWithApisauce = async(
   api,
   url,
   requestObject,
   type = apiMethods.post
 ) => {
-  let response = null
+  let response = null;
   try {
-    response = await getData(api, url, requestObject, type)
-  } catch (error) {
-    throw error
+    response = await getData(api, url, requestObject, type);
   }
-  return response
-}
+  catch (error) {
+    throw error;
+  }
+  return response;
+};
 
 export const getUserDisplayableErrorMessage = (error) => {
-  const defaultMessage = 'Something went wrong please try again'
+  const defaultMessage = 'Something went wrong please try again';
   try {
     if (error && error.message) {
-      return JSON.parse(error).originalError.message
+      return JSON.parse(error).originalError.message;
     }
-  } catch (exception) {}
-  return defaultMessage
-}
+  }
+  catch (exception) {}
+  return defaultMessage;
+};

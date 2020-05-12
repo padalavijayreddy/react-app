@@ -128,9 +128,7 @@ describe("SignInRoute Tests", () => {
         const passwordField = getByPlaceholderText("Password");
         const signInButton = getByRole("button", { name: "Sign in" });
 
-        const mockLoadingPromise = new Promise(function(resolve, reject) {
-            reject(new Error('error'));
-        });
+        const mockLoadingPromise = Promise.reject(new Error('server-error'));
 
         const mockSignInAPI = jest.fn();
         mockSignInAPI.mockReturnValue(mockLoadingPromise);
@@ -141,7 +139,7 @@ describe("SignInRoute Tests", () => {
         fireEvent.change(passwordField, { target: { value: password } });
         fireEvent.click(signInButton);
 
-        waitFor(() => {
+        await waitFor(() => {
             getByText(/error/i);
         });
     });

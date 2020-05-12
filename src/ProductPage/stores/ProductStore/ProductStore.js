@@ -76,8 +76,7 @@ class ProductStore {
     @action.bound
     filterProducts(availableSizesList, sizesList) {
         if (sizesList.length === 0) return true;
-        return sizesList.filter(size => availableSizesList.includes(size)).length > 0;
-    }
+        return sizesList.filter(size => availableSizesList.includes(size)).length > 0; }
 
     @action.bound
     filterTitles(title) {

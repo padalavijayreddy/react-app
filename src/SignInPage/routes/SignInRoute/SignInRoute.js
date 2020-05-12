@@ -28,7 +28,6 @@ class SignInRoute extends React.Component {
         this.errorMessage = '';
     }
 
-
     @action.bound
     onChangeUsername(event) {
         this.username = event.target.value;
@@ -38,13 +37,6 @@ class SignInRoute extends React.Component {
     onChangePassword(event) {
         this.password = event.target.value;
     }
-
-    @action.bound
-    onEnterKeyPress = e => {
-        if (e.key === "Enter") {
-            this.onSubmit(e);
-        }
-    };
 
     @action.bound
     onSignInSuccess() {
@@ -58,6 +50,9 @@ class SignInRoute extends React.Component {
         if (apiError !== null && apiError !== undefined) {
             this.errorMessage = apiError;
         }
+        // else {
+        //     this.errorMessage = "Something went error";
+        // }
     }
 
     @action.bound
