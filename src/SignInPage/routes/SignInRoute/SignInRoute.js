@@ -15,7 +15,9 @@ class SignInRoute extends React.Component {
     @observable username;
     @observable password;
     @observable errorMessage;
-
+    userNameRef
+    passwordRef
+    
     constructor(props) {
         super(props);
         this.init();
@@ -23,9 +25,15 @@ class SignInRoute extends React.Component {
 
     @action.bound
     init() {
+        this.userNameRef = React.createRef();
+        this.passwordRef = React.createRef();
         this.password = '';
         this.username = '';
         this.errorMessage = '';
+    }
+    
+    componentDidMount(){
+        this.userNameRef.current.focus();
     }
 
     @action.bound
@@ -88,7 +96,8 @@ class SignInRoute extends React.Component {
             username,
             password,
             onSubmit,
-            errorMessage
+            errorMessage,
+            userNameRef
         } = this, isLoading = (authStore.getUserSignInAPIStatus === API_FETCHING);
         return (<SignInPage
         {...{
@@ -99,7 +108,9 @@ class SignInRoute extends React.Component {
         password,
         onSubmit,
         isLoading,
-        errorMessage}}
+        errorMessage,
+        userNameRef
+        }}
         />);
     }
 }

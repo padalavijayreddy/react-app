@@ -6,6 +6,10 @@ import { API_FETCHING } from '../../../utils/APIUtils';
 import { getAccessToken } from '../../../utils/StorageUtils';
 import { PRODUCT_PAGE_PATH } from '../../../ProductPage/constants/RouteConstants';
 
+const DisplayMessage = (props) => {
+    return <div>{props.children}</div>;
+};
+
 @observer
 class SignInPage extends React.Component {
     render() {
@@ -17,7 +21,8 @@ class SignInPage extends React.Component {
             password,
             onSubmit,
             errorMessage,
-            isLoading
+            isLoading,
+            userNameRef
         } = this.props;
         return (
             <MainDiv>    
@@ -26,7 +31,7 @@ class SignInPage extends React.Component {
                 <Form>
                     <UserInputDiv>
                         <UserInputLabel>Username</UserInputLabel>
-                        <UserInput onChange={onChangeUsername} value = {username} id="username" type="text" placeholder="Username"/>
+                        <UserInput ref={userNameRef} onChange={onChangeUsername} value = {username} id="username" type="text" placeholder="Username"/>
                     </UserInputDiv>
                     <PasswordInputDiv>
                         <PasswordLabel>Password</PasswordLabel>
@@ -40,6 +45,7 @@ class SignInPage extends React.Component {
                         <Forgot href="#">Forgot Password?</Forgot>
                     </SubmitButton>
                 </Form>
+                <DisplayMessage>HI ..</DisplayMessage>
                 <Footer> &copy;2020 PVR Products* pvt Lmtd. All rights reserved.</Footer>
             </SubDiv>
         </MainDiv>
