@@ -12,6 +12,9 @@ const DisplayMessage = (props) => {
 
 @observer
 class SignInPage extends React.Component {
+    userNameRef = React.createRef()
+    passwordRef = React.createRef()
+
     render() {
         const {
             onChangeUsername,
@@ -22,7 +25,8 @@ class SignInPage extends React.Component {
             onSubmit,
             errorMessage,
             isLoading,
-            userNameRef
+            //userNameRef,
+            //passwordRef
         } = this.props;
         return (
             <MainDiv>    
@@ -31,11 +35,11 @@ class SignInPage extends React.Component {
                 <Form>
                     <UserInputDiv>
                         <UserInputLabel>Username</UserInputLabel>
-                        <UserInput ref={userNameRef} onChange={onChangeUsername} value = {username} id="username" type="text" placeholder="Username"/>
+                        <UserInput ref={this.userNameRef} onChange={onChangeUsername} value = {username} id="username" type="text" placeholder="Username"/>
                     </UserInputDiv>
                     <PasswordInputDiv>
                         <PasswordLabel>Password</PasswordLabel>
-                        <PasswordInput onChange={onChangePassword} value={ password } id="password" type="password" placeholder="Password" onKeyPress={onEnterKeyPress}/>
+                        <PasswordInput ref={this.passwordRef} onChange={onChangePassword} value={ password } id="password" type="password" placeholder="Password" onKeyPress={onEnterKeyPress}/>
                     </PasswordInputDiv>
                     <SubmitButton>
                        <div>

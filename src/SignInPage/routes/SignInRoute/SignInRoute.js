@@ -11,108 +11,118 @@ import { isLoggedIn } from '../../utils/AuthUtils';
 @inject('authStore')
 @observer
 class SignInRoute extends React.Component {
-    @observable status;
-    @observable username;
-    @observable password;
-    @observable errorMessage;
-    userNameRef
-    passwordRef
-    
-    constructor(props) {
-        super(props);
-        this.init();
-    }
+        @observable status;
+        @observable username;
+        @observable password;
+        @observable errorMessage;
+        //userNameRef
+        //passwordRef
+        signInPageRef
 
-    @action.bound
-    init() {
-        this.userNameRef = React.createRef();
-        this.passwordRef = React.createRef();
-        this.password = '';
-        this.username = '';
-        this.errorMessage = '';
-    }
-    
-    componentDidMount(){
-        this.userNameRef.current.focus();
-    }
-
-    @action.bound
-    onChangeUsername(event) {
-        this.username = event.target.value;
-    }
-
-    @action.bound
-    onChangePassword(event) {
-        this.password = event.target.value;
-    }
-
-    @action.bound
-    onSignInSuccess() {
-        const { history } = this.props;
-        history.replace(PRODUCT_PAGE_PATH);
-    }
-
-    onSignInFailure = () => {
-        const { authStore } = this.props;
-        const { getUserSignInAPIError: apiError } = authStore;
-        if (apiError !== null && apiError !== undefined) {
-            this.errorMessage = apiError;
+        constructor(props) {
+            super(props);
+            this.init();
         }
-        // else {
-        //     this.errorMessage = "Something went error";
-        // }
-    }
 
-    @action.bound
-    async onSubmit(event) {
-        event.preventDefault();
-        const { username, password } = this;
-        if (username.trim().length === 0)
-            this.errorMessage = 'Please enter username';
-        else if (password.trim().length === 0)
-            this.errorMessage = 'Please enter password';
-        else {
-            const userData = { username, password };
-            const { onSignInSuccess, onSignInFailure } = this;
+        @action.bound
+        init() {
+            this.signInPageRef = React.createRef();
+            //this.userNameRef = React.createRef();
+            //this.passwordRef = React.createRef();
+            this.password = '';
+            this.username = '';
+            this.errorMessage = '';
+        }
+
+        componentDidMount() {
+            this.signInPageRef.current.userNameRef.current.focus();
+
+        }
+
+        @action.bound
+        onChangeUsername(event) {
+            this.username = event.target.value;
+        }
+
+        @action.bound
+        onChangePassword(event) {
+            this.password = event.target.value;
+        }
+
+        @action.bound
+        onSignInSuccess() {
+            const { history } = this.props;
+            history.replace(PRODUCT_PAGE_PATH);
+        }
+
+        onSignInFailure = () => {
             const { authStore } = this.props;
-            await authStore.userSignIn(userData, onSignInSuccess, onSignInFailure);
+            const { getUserSignInAPIError: apiError } = authStore;
+            if (apiError !== null && apiError !== undefined) {
+                this.errorMessage = apiError;
+            }
+            // else {
+            //     this.errorMessage = "Something went error";
+            // }
         }
-    }
 
-    renderProductsPage = () => {
-        return <Redirect to={PRODUCT_PAGE_PATH} />;
-    }
-
-    render() {
-        if (isLoggedIn()) {
-            return this.renderProductsPage();
+        @action.bound
+        async onSubmit(event) {
+            event.preventDefault();
+            const { username, password } = this;
+            if (username.trim().length === 0) {
+                this.errorMessage = 'Please enter username';
+                this.signInPageRef.current.userNameRef.current.focus();
+            }
+            else if (password.trim().length === 0) {
+                this.errorMessage = 'Please enter password';
+                this.signInPageRef.current.passwordRef.current.focus();
+            }
+            else {
+                const userData = { username, password };
+                const { onSignInSuccess, onSignInFailure } = this;
+                const { authStore } = this.props;
+                await authStore.userSignIn(userData, onSignInSuccess, onSignInFailure);
+            }
         }
-        const { authStore } = this.props;
-        const {
-            props: {},
-            onChangeUsername,
-            onChangePassword,
-            onEnterKeyPress,
-            username,
-            password,
-            onSubmit,
-            errorMessage,
-            userNameRef
-        } = this, isLoading = (authStore.getUserSignInAPIStatus === API_FETCHING);
-        return (<SignInPage
-        {...{
-        onChangeUsername,
-        onChangePassword,
-        onEnterKeyPress,
-        username,
-        password,
-        onSubmit,
-        isLoading,
-        errorMessage,
-        userNameRef
-        }}
-        />);
-    }
-}
 
-export { SignInRoute };
+        renderProductsPage = () => {
+            return <Redirect to={PRODUCT_PAGE_PATH} />;
+        }
+
+        render() {
+            if (isLoggedIn()) {
+                return this.renderProductsPage();
+            }
+            const { authStore } = this.props;
+            const {
+                props: {},
+                onChangeUsername,
+                onChangePassword,
+                onEnterKeyPress,
+                username,
+                password,
+                onSubmit,
+                errorMessage,
+                signInPageRef
+                //userNameRef,
+                //passwordRef
+            } = this, isLoading = (authStore.getUserSignInAPIStatus === API_FETCHING);
+            return ( < SignInPage ref = { signInPageRef } { ...{
+                        onChangeUsername,
+                        onChangePassword,
+                        onEnterKeyPress,
+                        username,
+                        password,
+                        onSubmit,
+                        isLoading,
+                        errorMessage,
+                        //userNameRef,
+                        //passwordRef
+                    }
+                }
+                />);
+            }
+        }
+
+        export { SignInRoute };

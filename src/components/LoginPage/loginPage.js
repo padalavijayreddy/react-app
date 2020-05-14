@@ -5,6 +5,27 @@
  import tw from 'tailwind.macro';
  import styled from '@emotion/styled';
 
+ //  const propComponents = {
+ //      Photo: (props) => <button onClick={()=>props.toggleFun(props.text)}>{props.text}</button>,
+ //      Video: (props) => <button onClick={()=>props.toggleFun(props.text)}>{props.text}</button>
+ //  }
+
+ //  function Vijay(props) {
+ //      const PropButton = propComponents[props.btnType];
+ //      return <PropButton text={props.btnType} toggleFun={props.toggleFun}/>
+ //  }
+
+ const components = {
+     Photo: () => <div>Rahullllll</div>,
+     Video: () => <div>Vijayyyyy</div>
+ };
+
+ function Story(props) {
+     const SpecificStory = components[props.storyType];
+     return <SpecificStory/>;
+ }
+
+
  @observer
  class LoginPage extends React.Component {
      @observable status;
@@ -12,10 +33,13 @@
      @observable password;
      @observable showPasswordError
      @observable showUsernameError
+     @observable btnType = 'Photo'
 
      render() {
          return (
              <div className="flex justify-center items-center w-screen h-screen">
+             <Story storyType="Photo"/>
+             {/*<Vijay btnType={this.btnType} toggleFun={(textType) => this.btnType = (textType === 'Photo')?'Video':'Photo'}/>*/}
                             <div className="w-full max-w-xs">
                                 <div className="block text-gray-700 text-sm font-bold mb-2">LOGIN FORM</div>
                                   <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
