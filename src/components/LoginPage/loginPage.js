@@ -25,6 +25,33 @@
      return <SpecificStory/>;
  }
 
+ function NumberDescriber(props) {
+     let description;
+     if (props.number % 2 == 0) {
+         description = <strong>Even</strong>;
+     }
+     else {
+         description = <i>Odd</i>;
+     }
+     return description;
+ }
+
+ const Message = () => {
+     const props = { firstname: "DEv", lastname: "konda" };
+     return <Greeting {...props}/>;
+ };
+
+ function Greeting(props) {
+     return (
+         <div>
+       <strong>{props.firstname}</strong>
+       <strong>{props.lastname}</strong>
+       <strong>HAPPY NEW YEAR</strong>
+    </div>
+     );
+ }
+
+
 
  @observer
  class LoginPage extends React.Component {
@@ -38,7 +65,9 @@
      render() {
          return (
              <div className="flex justify-center items-center w-screen h-screen">
-             <Story storyType="Photo"/>
+             {/*<Story storyType="Photo"/>*/}
+             {/*<NumberDescriber number="13"/>*/}
+             <Message/>
              {/*<Vijay btnType={this.btnType} toggleFun={(textType) => this.btnType = (textType === 'Photo')?'Video':'Photo'}/>*/}
                             <div className="w-full max-w-xs">
                                 <div className="block text-gray-700 text-sm font-bold mb-2">LOGIN FORM</div>
