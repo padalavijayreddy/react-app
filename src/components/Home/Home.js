@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { PRODUCT_PAGE_PATH } from '../../ProductPage/constants/RouteConstants';
 import { SIGN_IN_PATH } from '../../SignInPage/constants/RouteConstants';
+import { PRACTICE_ADVANCED_CONCEPTS_PATH } from '../../constants/RouteConstants';
 import './Home.css';
 
 class Home extends React.Component {
@@ -36,6 +37,10 @@ class Home extends React.Component {
             <div>
                 <Link style={{color:'inherit',textDecoration:'inherit'}} to={SIGN_IN_PATH}>ECommercePage</Link>
             </div>
+            <div>
+                <Link style={{color:'inherit',textDecoration:'inherit'}} to={PRACTICE_ADVANCED_CONCEPTS_PATH}>PracticeAdvancedConceptRoute</Link>
+            </div>
+            
          {/*<div>
                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/UsersPage">UsersPage</Link>
             </div>

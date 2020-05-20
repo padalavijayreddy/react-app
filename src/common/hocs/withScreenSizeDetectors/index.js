@@ -1,0 +1,1 @@
+export { withScreenSizeDetectors } from './withScreenSizeDetectors';

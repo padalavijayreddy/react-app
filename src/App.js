@@ -39,7 +39,7 @@ import ProductPageStores from './ProductPage/stores';
 
 import { AuthRoutes } from './SignInPage/routes';
 import { ProductRoutes } from './ProductPage/routes';
-
+import { commonRoutes } from './common/routes';
 
 @observer
 class App extends React.Component {
@@ -60,9 +60,9 @@ class App extends React.Component {
           <Route exact path="/CounterApp">
             <CounterApp />
           </Route>
-          <Route exact path="/car">
+          {/*<Route exact path="/car">
             <CarsList />
-          </Route>
+          </Route>*/}
           <Route exact path="/TodoList">
             <TodoList />
           </Route>
@@ -112,6 +112,7 @@ class App extends React.Component {
           <Route exact path="/UsersPage" component={UsersPage}/>
           <Route exact path="/LoginPage" component={LoginPage}/>
           {AuthRoutes}
+          {commonRoutes}
           {ProductRoutes}
           <Route path='/'>
             <Home />
