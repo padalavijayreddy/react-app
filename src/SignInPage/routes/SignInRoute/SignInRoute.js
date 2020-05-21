@@ -35,8 +35,9 @@ class SignInRoute extends React.Component {
         }
 
         componentDidMount() {
-            this.signInPageRef.current.userNameRef.current.focus();
-
+            if (this.signInPageRef.current !== null) {
+                this.signInPageRef.current.userNameRef.current.focus();
+            }
         }
 
         @action.bound

@@ -12,7 +12,7 @@ export default {
 
 export const defaultView = () => <FailureView />
 
-export const withOnRetryAndErrorMessageProp = () => (
+export const with123OnR5etryAndErrorMessageProp = () => (
    <FailureView
       onRetryClick={action('retry clicked')}
       errorMessage={'Failed'}
