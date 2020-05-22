@@ -5,9 +5,31 @@ import { MainDiv, SubDiv, LoginForm, Form, UserInputDiv, UserInputLabel, UserInp
 import { API_FETCHING } from '../../../utils/APIUtils';
 import { getAccessToken } from '../../../utils/StorageUtils';
 import { PRODUCT_PAGE_PATH } from '../../../ProductPage/constants/RouteConstants';
+import Loader from 'react-loader-spinner';
 
 const DisplayMessage = (props) => {
     return <div>{props.children}</div>;
+};
+
+
+
+export const SignInButton = ({ isLoading, onSubmit, onEnterKeyPress, SignIntext }) => {
+
+    return (
+        <Button disabled={isLoading} data-testid='sign-in-button' onClick={onSubmit} type="button" onKeyPress={onEnterKeyPress}>{(isLoading)?
+        <Loader
+            type="TailSpin"
+            color="#00BFFF"
+            height={25}
+            width={25}
+            />
+        :SignIntext}</Button>
+    );
+    
+};
+
+SignInButton.defaultProps = {
+    SignIntext: "Default Text",
 };
 
 @observer
@@ -43,7 +65,7 @@ class SignInPage extends React.Component {
                     </PasswordInputDiv>
                     <SubmitButton>
                        <div>
-                        <Button disabled={isLoading} data-testid='sign-in-button' onClick={onSubmit} type="button" onKeyPress={onEnterKeyPress}>{(isLoading)?"Loading...":"Sign in"}</Button>
+                        <SignInButton {...{isLoading, onEnterKeyPress, onSubmit}}/>
                         <ErrorMessage>{errorMessage }</ErrorMessage>
                        </div>    
                         <Forgot href="#">Forgot Password?</Forgot>

@@ -3,10 +3,16 @@ import React from "react";
 import { NoDataViewContainer, NoDataViewText } from "./styledComponents";
 
 class NoDataView extends React.Component {
+
+  static defaultProps = {
+    text: "No Data View"
+  };
+
   render() {
+    const { text } = this.props;
     return (
-      <NoDataViewContainer>
-        <NoDataViewText>No data found!</NoDataViewText>
+      <NoDataViewContainer {...this.props}>
+        <NoDataViewText>{text}</NoDataViewText>
       </NoDataViewContainer>
     );
   }
