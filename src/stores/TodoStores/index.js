@@ -67,18 +67,15 @@ class TodoStores {
             completed: false
         };
         this.todos.push(new TodoModel(todoObject));
-        console.log(this.todos, "Stores -> onAddTodo");
     }
 
-
-    @action.bound
-    onRemoveTodo(id) {
-        this.todos = this.todos.filter(items => items.id !== id);
-    }
+@action.bound
+onRemoveTodo(id) {
+    this.todos = this.todos.filter(items => items.id !== id);
+}
 
     @action.bound
     onChangeSelectedFilter(changedFilter) {
-        console.log(changedFilter);
         this.selectedFilter = changedFilter;
     }
 
@@ -90,7 +87,6 @@ class TodoStores {
 
     @computed
     get filteredTodos() {
-        console.log(this.todos);
         if (this.selectedFilter === "ALL")
             return this.todos;
         else if (this.selectedFilter === "ACTIVE")

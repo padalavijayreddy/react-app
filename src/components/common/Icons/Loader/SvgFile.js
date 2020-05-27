@@ -6,7 +6,7 @@ class Loader extends Component {
     height: 100,
     fill: "#00BFFF"
   };
-
+  
   render() {
     const { width, height, fill } = this.props;
     return (

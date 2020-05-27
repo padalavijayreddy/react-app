@@ -3,6 +3,7 @@ import { observable, action } from 'mobx';
 class CartItem {
     cartItemId
     productId
+    product
     @observable quantity
 
     constructor(data) {
@@ -14,6 +15,7 @@ class CartItem {
     init(data) {
         this.cartItemId = data.id;
         this.productId = data.productId;
+        this.product = data.product;
         this.quantity = data.quantity;
     }
 

@@ -1,2 +1,2 @@
-import ProductStore from './ProductStore';
-export default ProductStore;
+import ProductStorePagination from './ProductStorePagination';
+export default ProductStorePagination;

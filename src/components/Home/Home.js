@@ -32,9 +32,6 @@ class Home extends React.Component {
                 <Link style={{color:'inherit',textDecoration:'inherit'}} to="/RestAPITodoApp">RestAPITodoApp</Link>
             </div>
             <div>
-                <Link style={{color:'inherit',textDecoration:'inherit'}} to="/LoginPage">LoginPage</Link>
-            </div>
-            <div>
                 <Link style={{color:'inherit',textDecoration:'inherit'}} to={SIGN_IN_PATH}>ECommercePage</Link>
             </div>
             <div>

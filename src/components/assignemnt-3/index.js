@@ -5,7 +5,8 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
+}
+from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { IoMdArrowBack } from "react-icons/io";
 
@@ -17,7 +18,7 @@ export default function FormComponent() {
     history.push('/');
   }
   return (
-      <div>
+    <div>
       <div class="navigation">
        <button className="navigator-button" type="button" onClick={handleClick}><IoMdArrowBack/></button>
        <b className="navigator-bar">Form Component</b>
@@ -44,4 +45,3 @@ export default function FormComponent() {
       </div>
   );
 }
-

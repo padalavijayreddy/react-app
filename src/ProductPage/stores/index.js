@@ -1,12 +1,12 @@
-import { ProductAPI } from '../services/ProductService';
+import { PaginationAPI } from '../services/ProductService';
 import CartStore from './CartStore';
-import ProductStore from './ProductStore';
+import ProductStorePagination from './ProductStore';
 
-const productAPI = new ProductAPI();
-const productStore = new ProductStore(productAPI);
-const cartStore = new CartStore(productStore);
+const paginationAPI = new PaginationAPI();
+const productStorePagination = new ProductStorePagination(paginationAPI);
+const cartStore = new CartStore(productStorePagination);
 
 export default {
-    productStore,
+    productStorePagination,
     cartStore
 };

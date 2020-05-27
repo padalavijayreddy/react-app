@@ -1,6 +1,6 @@
 //Grid Game Stores
 
-import { observable,action } from 'mobx';
+import { observable, action } from 'mobx';
 import GridModel from '../GridModel';
 import gridJsonObjectList from './data.json';
 
@@ -13,8 +13,8 @@ class GridStores {
     @observable isGameCompleted
     @observable isLevelChanged
     @observable extraLife
-    
-    constructor(){
+
+    constructor() {
         this.level = 0;
         this.topLevel = 0;
         this.currentLevelGridCells = [];
@@ -24,129 +24,126 @@ class GridStores {
         this.extraLife = 1;
         this.setGridCells();
     }
-    
-    
+
+
     @action.bound
-    onCellClick(id){
+    onCellClick(id) {
         let hidden;
         this.currentLevelGridCells.findIndex((cell) => {
-            if(cell.id === id){
+            if (cell.id === id) {
                 hidden = cell.isHidden;
             }
         });
-        if(hidden){
+        if (hidden) {
             this.incrementSelectedCellsCount();
-            if(this.selectedCellsCount == gridJsonObjectList[this.level].hiddenCellCount){
-                this.isLevelChanged=true;
-                setTimeout(()=>{
+            if (this.selectedCellsCount == gridJsonObjectList[this.level].hiddenCellCount) {
+                this.isLevelChanged = true;
+                setTimeout(() => {
                     this.increaseTheLifeAfterThirdLevel();
                     this.goToNextLevelAndUpdateCells();
-                },500);
+                }, 500);
             }
         }
         else {
-            this.isLevelChanged=true;
-            setTimeout(()=>{
+            this.isLevelChanged = true;
+            setTimeout(() => {
                 this.goToInitialLevelAndUpdateCells();
-            },500);
+            }, 500);
         }
     }
-    
-    
+
+
     @action.bound
-    setGridCells(){
+    setGridCells() {
         this.isLevelChanged = false;
-        console.log('setGridCells');
         const { gridSize } = gridJsonObjectList[this.level];
-        let idsList = [...Array(gridSize*gridSize).keys()];
-        let randomList = [].concat(idsList).sort(()=>Math.random()-0.5).slice(0,gridSize);
+        let idsList = [...Array(gridSize * gridSize).keys()];
+        let randomList = [].concat(idsList).sort(() => Math.random() - 0.5).slice(0, gridSize);
         this.currentLevelGridCells = idsList.map((value) => {
             const gridStoreObject = {
-                id:Math.random().toString(),
-                isHidden:randomList.includes(value)
+                id: Math.random().toString(),
+                isHidden: randomList.includes(value)
             };
             return new GridModel(gridStoreObject);
         });
     }
-    
-    
+
+
     @action.bound
-    goToNextLevelAndUpdateCells(){
-        if(this.level<7){
+    goToNextLevelAndUpdateCells() {
+        if (this.level < 7) {
             this.level++;
             this.resetSelectedCellsCount();
             this.setGridCells();
         }
-        else{
+        else {
             this.isGameCompleted = true;
         }
     }
-    
-    
+
+
     @action.bound
-    goToInitialLevelAndUpdateCells(){
-        if(this.extraLife == 0||this.level == 7){
+    goToInitialLevelAndUpdateCells() {
+        if (this.extraLife == 0 || this.level == 7) {
             this.extraLife = 1;
             this.setTopLevel();
             this.level = 0;
             this.resetSelectedCellsCount();
             this.setGridCells();
         }
-        else{
+        else {
             this.extraLife--;
             this.resetSelectedCellsCount();
             this.setGridCells();
         }
     }
-    
-    
+
+
     @action.bound
-    resetSelectedCellsCount(){
-        console.log('resetSelectedCellsCount');
-        this.selectedCellsCount=0; 
+    resetSelectedCellsCount() {
+        this.selectedCellsCount = 0;
     }
-    
-    
+
+
     @action.bound
-    incrementSelectedCellsCount(){
+    incrementSelectedCellsCount() {
         this.selectedCellsCount++;
     }
-    
-    
+
+
     @action.bound
-    onPlayAgainClick(){
+    onPlayAgainClick() {
         this.extraLife = 1;
-        this.isGameCompleted=false;
+        this.isGameCompleted = false;
         this.setTopLevel();
         this.resetGame();
     }
-    
-    
+
+
     @action.bound
-    resetGame(){
-        console.log('resetGame');
+    resetGame() {
         this.goToInitialLevelAndUpdateCells();
     }
-    
-    
+
+
     @action.bound
-    increaseTheLifeAfterThirdLevel(){
-        if(this.level>=3){
+    increaseTheLifeAfterThirdLevel() {
+        if (this.level >= 3) {
             this.extraLife++;
         }
     }
-    
-    
+
+
     @action.bound
-    setTopLevel(){
-        if(this.level > this.topLevel){
+    setTopLevel() {
+        if (this.level > this.topLevel) {
             this.topLevel = this.level;
         }
-        else{
+        else {
             this.topLevel = this.topLevel;
         }
     }
 }
 
 let gridStores = new GridStores;
-export {gridStores as default, gridJsonObjectList};
+export { gridStores as default, gridJsonObjectList };

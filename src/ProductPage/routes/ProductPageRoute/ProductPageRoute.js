@@ -90,7 +90,11 @@ class ProductPageRoute extends React.Component {
             onChangeSortBy,
             totalNoOfProductsDisplayed,
             onSelectSize,
-            onChangeSearchText
+            onChangeSearchText,
+            currentPagePositionIncrementor,
+            currentPagePositionDecrementor,
+            currentPagePosition,
+            totalCountOfPages
         } = productStore;
         const {
             toggleDisplayCart,
@@ -121,7 +125,11 @@ class ProductPageRoute extends React.Component {
             shouldDisplayCart,
             signOut,
             renderProductList,
-            doNetworkCalls
+            doNetworkCalls,
+            currentPagePositionIncrementor,
+            currentPagePositionDecrementor,
+            currentPagePosition,
+            totalCountOfPages
             }}
             />
         );

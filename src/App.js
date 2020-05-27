@@ -34,7 +34,6 @@ import GridMemoryGame from './components/assignment-9/gridMemoryGame';
 import RestAPITodoApp from './components/assignment-10/TodoApp/todoApp';
 import UsersPage from './components/UsersPage';
 import stores from './stores';
-import LoginPage from './components/LoginPage/loginPage';
 import ProductPageStores from './ProductPage/stores';
 
 import { AuthRoutes } from './SignInPage/routes';
@@ -110,7 +109,6 @@ class App extends React.Component {
           </Route>
           <Route exact path="/RestAPITodoApp" component={RestAPITodoApp}/>
           <Route exact path="/UsersPage" component={UsersPage}/>
-          <Route exact path="/LoginPage" component={LoginPage}/>
           {AuthRoutes}
           {commonRoutes}
           {ProductRoutes}

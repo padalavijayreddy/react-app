@@ -1,7 +1,7 @@
 import tw from 'tailwind.macro';
 import styled from '@emotion/styled';
 
-const MainDiv = styled.div `${tw`flex flex-col w-full`}`;
+const MainDiv = styled.div `${tw`flex flex-col w-full pb-10`}`;
 const ProductPageHeader = styled.div `${tw`flex justify-between items-center`}`;
 const ProductPageDetails = styled.div `${tw`flex w-full justify-center`}`;
 const SignOutbutton = styled.button `${tw`border border-gray-800 m-2 h-10 w-24 p-1 rounded text-xs`}`;
@@ -20,5 +20,5 @@ export {
     CartImage,
     CartImageP,
     SortAndListRendering,
-    Cookieconsent
+    Cookieconsent,
 };

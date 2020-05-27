@@ -13,7 +13,7 @@ class CartList extends React.Component {
         if ([...cartProductList.entries()].length === 0) return <AddToCartP>Add some products in the cart</AddToCartP>;
         return [...cartProductList.entries()].map(object => {
             const key = object[0],
-                product = getProductDetailsById(object[0]),
+                product = object[1].product,
                 cartItem = object[1];
             return <CartItem {...{key,product,onRemoveCartItem,cartItem}}/>;
         });

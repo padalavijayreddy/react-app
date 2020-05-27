@@ -15,8 +15,6 @@ class SignInRoute extends React.Component {
         @observable username;
         @observable password;
         @observable errorMessage;
-        //userNameRef
-        //passwordRef
         signInPageRef
 
         constructor(props) {
@@ -27,8 +25,6 @@ class SignInRoute extends React.Component {
         @action.bound
         init() {
             this.signInPageRef = React.createRef();
-            //this.userNameRef = React.createRef();
-            //this.passwordRef = React.createRef();
             this.password = '';
             this.username = '';
             this.errorMessage = '';

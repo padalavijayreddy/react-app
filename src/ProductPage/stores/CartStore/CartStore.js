@@ -26,6 +26,7 @@ class CartStore {
             const cartObject = {
                 id: Math.random().toString(),
                 productId,
+                product: this.getProductDetailsById(productId),
                 quantity: 1
             };
             this.cartProductList.set(productId, new CartItem(cartObject));
@@ -57,7 +58,7 @@ class CartStore {
         let list = [...this.cartProductList.values()];
         if (list.length === 0) return 0;
         return list.map(cartItem => {
-            const { price } = getProductDetailsById(cartItem.productId), { quantity } = cartItem;
+            const { price } = cartItem.product, { quantity } = cartItem;
             return price * quantity;
         }).reduce((a, b) => a + b).toFixed(2);
     }
