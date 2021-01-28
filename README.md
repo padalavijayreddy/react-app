@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+In the project directory Before run the app run, check whether you're in the respective folder or not 
+
+### `npm i`
+
 In the project directory, you can run:
 
 ### `npm start`
